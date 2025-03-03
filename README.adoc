@@ -40,3 +40,11 @@ CDPSM v2.0 is described in: +
 https://standard.no/no/Nettbutikk/produktkatalogen/Produktpresentasjon/?ProductID=1355614[IEC 61968-13:2021]
 
 CDPSM v2.0 plus Norwegian extensions is used as the bases for the Autofos profile. Description of the project can be found: https://www.statnett.no/for-aktorer-i-kraftbransjen/systemansvaret/fosweb/kraftsystemdata/autofos/[Autofos | Statnett] (Norwegian) https://www-statnett-no.translate.goog/for-aktorer-i-kraftbransjen/systemansvaret/fosweb/kraftsystemdata/autofos/?_x_tr_sl=no&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp[Autofos | Statnett (www-statnett-no.translate.goog)]
+
+== Accreditation  
+
+We acknowledge and accredit link:https://cimug.ucaiug.org/[UCA CIMug] and the team responsible for the development of *IEC 61968-13:2021 (CDPSM)*, including contributions from EDF R&D and Statnett SF, for their foundational work on the CIM profile included in this repository.  
+
+This profile also incorporates **extensions from Statnett AutoFOS**, enhancing its applicability to enterprise-level energy system modeling.  
+
+This repository and its contents are **made available under the Apache License 2.0**, ensuring open access, modification, and redistribution under the terms outlined in the `LICENSE` file.
