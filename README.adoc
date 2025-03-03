@@ -1,2 +1,42 @@
-= CIM4Enterprise
-CIM for Enterprise Vocabulary and Schema project
+= CIM for Enterprise Vocabulary and Schema project
+v0.1.0-alpha, 2025-02-24
+:toc:  
+:toclevels: 2  
+
+== Overview  
+
+CIM for Enterprise (CIM4Enterprise) is a project repository that contains the vocabulary and schemas for the Common Information Model (CIM) for Enterprise as defined in *IEC 61968-13*, also known as the Common Distribution Power System Model (CDPSM).  
+
+This repository includes:
+
+- The **CIM for Enterprise Schema**, aligning with *IEC 61968-13 (CDPSM)*.  
+- **Statnett AutoFOS Extensions** to support additional enterprise-specific functionalities.  
+- **Alignment with Key Harmonization Standards**, including:  
+  - *Asset Administration Shell (AAS)*  
+  - *Building Information Model (BIM)*  
+  - *ISO Industrial Data Ontology (IDO)*  
+  - *GeoSPARQL* for spatial data interoperability.  
+
+== Purpose  
+
+CIM4Enterprise aims to:
+
+- Provide a **standardized CIM schema** for enterprise-level data exchange and system integration.  
+- Extend CIM to accommodate **Statnett AutoFOS-specific requirements**.  
+- Align CIM-based models with **cross-domain interoperability standards** (e.g., AAS, BIM, IDO, GeoSPARQL).  
+- Serve as a reference model for **enterprise-level data harmonization in the power sector**.  
+
+== CIM4Enterprise Profiles  
+
+TBA
+
+== Repository Structure  
+
+
+## CDPSM v2.0
+International Electrotechnical Commission (IEC) Common Distribution Power System Model (CDPSM) is based on IEC Common Information Model (CIM) standards defined in IEC 61970-series, IEC 61968-series and IEC 62325-series. IEC CDPSM complement IEC 61970-45x based profiles, including CGMES, to exchange relevant data for supporting power flow calculation of unbalanced distribution network. In addition, it includes structure data to support exchange of asset and asset catalogue data.
+
+CDPSM v2.0 is described in: +
+https://standard.no/no/Nettbutikk/produktkatalogen/Produktpresentasjon/?ProductID=1355614[IEC 61968-13:2021]
+
+CDPSM v2.0 plus Norwegian extensions is used as the bases for the Autofos profile. Description of the project can be found: https://www.statnett.no/for-aktorer-i-kraftbransjen/systemansvaret/fosweb/kraftsystemdata/autofos/[Autofos | Statnett] (Norwegian) https://www-statnett-no.translate.goog/for-aktorer-i-kraftbransjen/systemansvaret/fosweb/kraftsystemdata/autofos/?_x_tr_sl=no&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp[Autofos | Statnett (www-statnett-no.translate.goog)]
