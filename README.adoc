@@ -39,7 +39,7 @@ International Electrotechnical Commission (IEC) Common Distribution Power System
 CDPSM v2.0 is described in: +
 https://standard.no/no/Nettbutikk/produktkatalogen/Produktpresentasjon/?ProductID=1355614[IEC 61968-13:2021]
 
-CDPSM v2.0 plus Norwegian extensions is used as the bases for the Autofos profile. Description of the project can be found: https://www.statnett.no/for-aktorer-i-kraftbransjen/systemansvaret/fosweb/kraftsystemdata/autofos/[Autofos | Statnett] (Norwegian) https://www-statnett-no.translate.goog/for-aktorer-i-kraftbransjen/systemansvaret/fosweb/kraftsystemdata/autofos/?_x_tr_sl=no&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp[Autofos | Statnett (www-statnett-no.translate.goog)]
+CDPSM v2.0 plus Norwegian extensions is used as the bases for the Autofos profile. A presentation of the project by Magnus Tennøe for CIM User Group meeting June 20th 2019 at Saclay can be found here: link:https://cimug.ucaiug.org/Meetings/eu2019/Saclay%202019%20Presentations/CIM%20Meeting%20Day%202/20190619%20CIMug%20-%20Autofos%20og%20CIM.pdf[Autofos | CIMiug 2019]. A news comment from the Norwegian Electrotechnical Committee (NEK) can be found here link:https://www.nek.no/2020/02/10/nettselskapene-far-store-gevinster-ved-automatisert-fos-rapportering/[Nettselskapene får store gevinster ved automatisert FOS rapportering!] (Norwegian) link:https://www-nek-no.translate.goog/2020/02/10/nettselskapene-far-store-gevinster-ved-automatisert-fos-rapportering/?_x_tr_sl=no&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp[Grid companies benefit greatly from automated FOS reporting!](English translated by Google)
 
 == Accreditation  
 
