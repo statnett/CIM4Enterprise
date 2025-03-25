@@ -9,22 +9,22 @@ CIM for Enterprise (CIM4Enterprise) is a project repository that contains the vo
 
 This repository includes:
 
-- The **CIM for Enterprise Schema**, aligning with *IEC 61968-13 (CDPSM)*.  
-- **Statnett AutoFOS Extensions** to support additional enterprise-specific functionalities.  
-- **Alignment with Key Harmonization Standards**, including:  
-  - *Asset Administration Shell (AAS)*  
-  - *Building Information Model (BIM)*  
-  - *ISO Industrial Data Ontology (IDO)*  
-  - *GeoSPARQL* for spatial data interoperability.  
+* The **CIM for Enterprise Schema**, aligning with *IEC 61968-13 (CDPSM)*.  
+* **Statnett AutoFOS Extensions** to support additional enterprise-specific functionalities.  
+* **Alignment with Key Harmonization Standards**, including:  
+  ** *Asset Administration Shell (AAS)*  
+  ** *Building Information Model (BIM)*  
+  ** *ISO Industrial Data Ontology (IDO)*  
+  ** *GeoSPARQL* for spatial data interoperability.  
 
 == Purpose  
 
 CIM4Enterprise aims to:
 
-- Provide a **standardized CIM schema** for enterprise-level data exchange and system integration.  
-- Extend CIM to accommodate **Statnett AutoFOS-specific requirements**.  
-- Align CIM-based models with **cross-domain interoperability standards** (e.g., AAS, BIM, IDO, GeoSPARQL).  
-- Serve as a reference model for **enterprise-level data harmonization in the power sector**.  
+* Provide a **standardized CIM schema** for enterprise-level data exchange and system integration.  
+* Extend CIM to accommodate **Statnett AutoFOS-specific requirements**.  
+* Align CIM-based models with **cross-domain interoperability standards** (e.g., AAS, BIM, IDO, GeoSPARQL).  
+* Serve as a reference model for **enterprise-level data harmonization in the power sector**.  
 
 == CIM4Enterprise Profiles  
 
