@@ -9,4 +9,4 @@ all: $(TTL)
 	  perl $(FIXME)/fix-namespaces.pl |\
 	  cat $(FIXME)/prefixes.ttl - > temp.ttl
 	owl.bat write --prefixAlign=right --useCommaByDefault temp.ttl $@
-	#rm temp.ttl
+	rm temp.ttl
