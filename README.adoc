@@ -11,11 +11,11 @@ This repository includes:
 
 * The **CIM for Enterprise Schema**, aligning with *IEC 61968-13 (CDPSM)*.  
 * **Statnett AutoFOS Extensions** to support additional enterprise-specific functionalities.  
-* **Alignment with Key Harmonization Standards**, including:  
-  ** *Asset Administration Shell (AAS)*  
-  ** *Building Information Model (BIM)*  
-  ** *ISO Industrial Data Ontology (IDO)*  
-  ** *GeoSPARQL* for spatial data interoperability.  
+* **Alignment with Key Harmonization Standards**, including:
+** *Asset Administration Shell (AAS)*  
+** *Building Information Model (BIM)*  
+** *ISO Industrial Data Ontology (IDO)*  
+** *GeoSPARQL* for spatial data interoperability. 
 
 == Purpose  
 
