@@ -1,0 +1,136 @@
+---
+ModelVersion: '2.0'
+OrganizationCode: 
+DictionaryCode: 
+DictionaryName: 
+DictionaryVersion: 
+LanguageIsoCode: 
+LanguageOnly: false
+UseOwnUri: false
+DictionaryUri: 
+License: 
+LicenseUrl: 
+ChangeRequestEmailAddress: 
+MoreInfoUrl: 
+QualityAssuranceProcedure: 
+QualityAssuranceProcedureUrl: 
+ReleaseDate: 
+Status: 
+Classes:
+- Code: 
+  Name: 
+  ClassType: 
+  Definition: 
+  Description: 
+  ParentClassCode: 
+  RelatedIfcEntityNamesList: []
+  Synonyms: []
+  ActivationDateUtc: 
+  ReferenceCode: 
+  CountriesOfUse: []
+  CountryOfOrigin: 
+  CreatorLanguageIsoCode: 
+  DeActivationDateUtc: 
+  DeprecationExplanation: 
+  DocumentReference: 
+  OwnedUri: 
+  ReplacedObjectCodes: []
+  ReplacingObjectCodes: []
+  RevisionDateUtc: 
+  RevisionNumber: 
+  Status: 
+  SubdivisionsOfUse: []
+  Uid: 
+  VersionDateUtc: 
+  VersionNumber: 
+  VisualRepresentationUri: 
+  ClassProperties:
+  - Code: 
+    PropertyCode: 
+    PropertyUri: 
+    Description: 
+    PropertySet: 
+    Unit: 
+    PredefinedValue: 
+    IsRequired: 
+    IsWritable: 
+    MaxExclusive: 
+    MaxInclusive: 
+    MinExclusive: 
+    MinInclusive: 
+    Pattern: 
+    OwnedUri: 
+    PropertyType: 
+    SortNumber: 
+    Symbol: 
+    AllowedValues:
+    - Code: 
+      Value: 
+      Description: 
+      Uri: 
+      SortNumber: 
+      OwnedUri: 
+  ClassRelations:
+  - RelationType: 
+    RelatedClassUri: 
+    RelatedClassName: 
+    Fraction: 
+    OwnedUri: 
+Properties:
+- Code: 
+  Name: 
+  Definition: 
+  Description: 
+  DataType: 
+  Units: []
+  Example: 
+  ActivationDateUtc: 
+  ConnectedPropertyCodes: []
+  CountriesOfUse: []
+  CountryOfOrigin: 
+  CreatorLanguageIsoCode: 
+  DeActivationDateUtc: 
+  DeprecationExplanation: 
+  Dimension: 
+  DimensionLength: 
+  DimensionMass: 
+  DimensionTime: 
+  DimensionElectricCurrent: 
+  DimensionThermodynamicTemperature: 
+  DimensionAmountOfSubstance: 
+  DimensionLuminousIntensity: 
+  DocumentReference: 
+  DynamicParameterPropertyCodes: []
+  IsDynamic: false
+  MaxExclusive: 
+  MaxInclusive: 
+  MinExclusive: 
+  MinInclusive: 
+  MethodOfMeasurement: 
+  OwnedUri: 
+  Pattern: 
+  PhysicalQuantity: 
+  PropertyValueKind: 
+  ReplacedObjectCodes: []
+  ReplacingObjectCodes: []
+  RevisionDateUtc: 
+  RevisionNumber: 
+  Status: 
+  SubdivisionsOfUse: []
+  TextFormat: 
+  Uid: 
+  VersionDateUtc: 
+  VersionNumber: 
+  VisualRepresentationUri: 
+  PropertyRelations:
+  - RelatedPropertyName: 
+    RelatedPropertyUri: 
+    RelationType: 
+    OwnedUri: 
+  AllowedValues:
+  - Code: 
+    Value: 
+    Description: 
+    Uri: 
+    SortNumber: 
+    OwnedUri: 

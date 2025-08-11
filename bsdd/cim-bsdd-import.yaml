@@ -1,0 +1,137 @@
+---
+ModelVersion: 2.0
+OrganizationCode: ucaiug
+DictionaryCode: cim
+DictionaryName: Electrical Common Information Model: Assets
+DictionaryVersion: TODO
+LanguageIsoCode: en
+LanguageOnly: false
+UseOwnUri: true # TODO decide
+DictionaryUri: https://cim.ucaiug.io/ns#  # only when UseOwnUri
+License: TODO
+LicenseUrl: TODO
+ChangeRequestEmailAddress: TODO
+MoreInfoUrl: TODO
+QualityAssuranceProcedure: TODO
+QualityAssuranceProcedureUrl: TODO
+ReleaseDate: 2025-08-01
+Status: Preview
+
+Classes:
+- Code: SwitchInfo
+  Name: SwitchInfo
+# ClassType: Class # default
+  Definition: Switch data.
+#  Description: 
+  ParentClassCode: AssetInfo
+  RelatedIfcEntityNamesList: [IfcSwitchingDeviceSWITCHDISCONNECTOR]
+#  Synonyms: []
+#  ActivationDateUtc: 
+  ReferenceCode: "" # so Code is not copied into it
+#  CountriesOfUse: []
+#  CountryOfOrigin: 
+  CreatorLanguageIsoCode: en
+#  DeActivationDateUtc: 
+#  DeprecationExplanation: 
+#  DocumentReference: 
+  OwnedUri: https://cim.ucaiug.io/ns#SwitchInfo
+#  ReplacedObjectCodes: []
+#  ReplacingObjectCodes: []
+#  RevisionDateUtc: 
+#  RevisionNumber:
+#  Status: Active
+#  SubdivisionsOfUse: []
+#  Uid: 
+#  VersionDateUtc: 
+#  VersionNumber: 
+#  VisualRepresentationUri: 
+  ClassProperties: # repeat from `Properties`
+  - Code: 
+    PropertyCode: 
+    PropertyUri: 
+    Description: 
+    PropertySet: 
+    Unit: 
+    PredefinedValue: 
+    IsRequired: 
+    IsWritable: 
+    MaxExclusive: 
+    MaxInclusive: 
+    MinExclusive: 
+    MinInclusive: 
+    Pattern: 
+    OwnedUri: 
+    PropertyType: 
+    SortNumber: 
+    Symbol: 
+    AllowedValues:
+    - Code: 
+      Value: 
+      Description: 
+      Uri: 
+      SortNumber: 
+      OwnedUri: 
+  ClassRelations:
+  - RelationType: IsPartOf
+    RelatedClassUri: https://cim.ucaiug.io/ns#Switch # TODO depends on OwnedUri decision
+    RelatedClassName: Switch
+#    Fraction: 
+    OwnedUri: true # of relation
+Properties:
+- Code: SwitchInfo.ratedCurrent
+  Name: ratedCurrent
+  Definition: Rated current.
+#  Description: 
+  DataType: Real
+  Units: [unit:A]
+#  Example: 
+#  ActivationDateUtc: 
+#  ConnectedPropertyCodes: []
+#  CountriesOfUse: []
+#  CountryOfOrigin: 
+  CreatorLanguageIsoCode: en
+#  DeActivationDateUtc: 
+#  DeprecationExplanation: 
+  Dimension: 
+  DimensionLength: 
+  DimensionMass: 
+  DimensionTime: 
+  DimensionElectricCurrent: 
+  DimensionThermodynamicTemperature: 
+  DimensionAmountOfSubstance: 
+  DimensionLuminousIntensity: 
+  DocumentReference: 
+#  DynamicParameterPropertyCodes: []
+#  IsDynamic: false
+#  MaxExclusive: 
+#  MaxInclusive: 
+#  MinExclusive: 
+#  MinInclusive: 
+#  MethodOfMeasurement: 
+  OwnedUri: https://cim.ucaiug.io/ns#SwitchInfo.ratedCurrent
+  Pattern: 
+  PhysicalQuantity: https://cim.ucaiug.io/ns#CurrentFlow
+  PropertyValueKind: 
+  ReplacedObjectCodes: []
+  ReplacingObjectCodes: []
+  RevisionDateUtc: 
+  RevisionNumber: 
+  Status: 
+  SubdivisionsOfUse: []
+  TextFormat: 
+  Uid: 
+  VersionDateUtc: 
+  VersionNumber: 
+  VisualRepresentationUri: 
+  PropertyRelations:
+  - RelatedPropertyName: 
+    RelatedPropertyUri: 
+    RelationType: 
+    OwnedUri: 
+  AllowedValues:
+  - Code: 
+    Value: 
+    Description: 
+    Uri: 
+    SortNumber: 
+    OwnedUri: 
