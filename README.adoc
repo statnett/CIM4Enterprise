@@ -32,6 +32,9 @@ TBA
 
 == Repository Structure  
 
+**IMPORTANT**:
+* [profile] has more ontologies (Asset, AssetCatalogue, ElectricalProperties, Functional, Statnett_CDPSM_ED2) but is not up to date
+* [schema] has fewer ontologies (Asset, AssetCatalogue) but is up to date
 
 ## CDPSM v2.0
 International Electrotechnical Commission (IEC) Common Distribution Power System Model (CDPSM) is based on IEC Common Information Model (CIM) standards defined in IEC 61970-series, IEC 61968-series and IEC 62325-series. IEC CDPSM complement IEC 61970-45x based profiles, including CGMES, to exchange relevant data for supporting power flow calculation of unbalanced distribution network. In addition, it includes structure data to support exchange of asset and asset catalogue data.
