@@ -1,0 +1,73 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX uml: <http://iec.ch/TC57/NonStandard/UML#>
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX onto: <http://www.ontotext.com/>
+PREFIX cim: <https://cim.ucaiug.io/ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <:>
+
+CONSTRUCT {
+    ?class :Code ?class .
+    ?class :Name ?cName .
+    ?class :ClassType "Class" .
+    ?class :Definition ?cDef .
+    ?class :ParentClassCode ?parentClass .
+    ?class :CountriesOfUse "[NO]" .
+    ?class :CountryOfOrigin "NO" .
+    ?class :CreatorLanguageIsoCode "EN" .
+    ?class :OwnedUri ?class .
+    ?class :Status "Active" .
+    ?class :ClassProperties _:p .
+        _:p :Code ?pCode .
+        _:p :PropertyUri ?pCode .
+        _:p :Description ?pDesc .
+        _:p :Unit ?pUnit .
+        _:p :OwnedUri ?pCode .
+        _:p :PropertyType "Property" .
+        _:p :AllowedValues _:pv .
+            _:pv :Code ?pvCode .
+            _:pv :Value ?pvLabel .
+            _:pv :Description ?pvDef .
+            _:pv :OwnedUri ?pvCode .
+    ?class :ClassRelations _:r .
+        _:r :RelationType ?classRel .
+        _:r :RelatedClassUri ?rel .
+        _:r :RelatedClassName ?classRelLab .
+        _:r :OwnedUri ?rel .
+} WHERE {
+    VALUES ?class {cim:Switch}
+    GRAPH onto:explicit {
+        ?class a owl:Class
+        OPTIONAL {?class rdfs:label ?cName} .
+        OPTIONAL {?class rdfs:comment ?cDef} .
+        OPTIONAL {?class rdfs:subClassOf ?parentClass }
+        OPTIONAL {
+            ?rel rdfs:subClassOf|^rdfs:subClassOf* ?class .
+            ?rel rdfs:label ?classRelLab
+            BIND(IF(EXISTS {?rel rdfs:subClassOf ?class}, "IsChildOf", "IsParentOf") as ?classRel) .
+            FILTER(?class != ?rel)
+        }
+        OPTIONAL {
+            { ?pCode rdfs:domain/^rdfs:subClassOf* ?class ;
+                  a owl:DatatypeProperty .
+              OPTIONAL {?pCode rdfs:comment ?pDesc}  .
+              OPTIONAL {?pCode qudt:hasUnit/qudt:symbol ?pUnit}
+            }
+            UNION
+            { ?pCode rdfs:domain/^rdfs:subClassOf* ?class ;
+                  a owl:ObjectProperty ;
+                  rdfs:range ?range .
+              ?range cims:stereotype uml:enumeration .
+              OPTIONAL {?pCode rdfs:comment ?pDesc}  .
+              OPTIONAL {
+                  ?pvCode rdf:type ?range ;
+                      rdfs:label ?pvLabel ;
+                      rdfs:comment ?pvDef .
+              }
+            }
+        }
+    }
+}
+
