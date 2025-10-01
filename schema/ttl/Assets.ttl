@@ -9,10 +9,12 @@
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
 @prefix      dcterms: <http://purl.org/dc/terms/> .
+@prefix       prefix: <http://qudt.org/vocab/prefix/> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix         qudt: <http://qudt.org/schema/qudt/> .
 @prefix         skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
+@prefix         unit: <http://qudt.org/vocab/unit/> .
 
 as:Ontology a owl:Ontology ;
   dcterms:description "This vocabulary is describing the assets profile from IEC 61968-13:2021."@en ;
@@ -177,22 +179,6 @@ Lifecycle dates for this asset."""@en ;
   rdfs:domain cim:Asset ;
   rdfs:range cim:LifecycleDate .
 
-cim:Asset.serialNumber a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "serialNumber" ;
-  rdfs:comment "Serial number of this asset."@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:Asset .
-
-cim:Asset.type a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "type" ;
-  rdfs:comment "Utility-specific classification of Asset and its subtypes, according to their corporate standards, practices, and existing IT systems (e.g., for management of assets, maintenance, work, outage, customers, etc.)."@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:Asset .
-
 cim:AssetContainer.Assets a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Assets" ;
   rdfs:comment "All assets within this container asset."@en ;
@@ -220,79 +206,6 @@ cim:EndDevice.UsagePoint a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:domain cim:EndDevice ;
   rdfs:range cim:UsagePoint .
 
-cim:IdentifiedObject.description a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "description" ;
-  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:IdentifiedObject .
-
-cim:IdentifiedObject.mRID a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:IdentifiedObject .
-
-cim:IdentifiedObject.name a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "name" ;
-  rdfs:comment "The name is any free human readable and possibly non unique text naming the object."@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:IdentifiedObject .
-
-cim:LifecycleDate.installationDate a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "installationDate" ;
-  rdfs:comment "Date current installation was completed, which may not be the same as the in-service date. Asset may have been installed at other locations previously. Ignored if asset is (1) not currently installed (e.g., stored in a depot) or (2) not intended to be installed (e.g., vehicle, tool)."@en ;
-  cims:dataType cim:Date ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:LifecycleDate .
-
-cim:LifecycleDate.manufacturedDate a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "manufacturedDate" ;
-  rdfs:comment "Date the asset was manufactured."@en ;
-  cims:dataType cim:Date ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:LifecycleDate .
-
-cim:LifecycleDate.purchaseDate a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "purchaseDate" ;
-  rdfs:comment "Date the asset was purchased. Note that even though an asset may have been purchased, it may not have been received into inventory at the time of purchase."@en ;
-  cims:dataType cim:Date ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:LifecycleDate .
-
-cim:LifecycleDate.receivedDate a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "receivedDate" ;
-  rdfs:comment "Date the asset was received and first placed into inventory."@en ;
-  cims:dataType cim:Date ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:LifecycleDate .
-
-cim:LifecycleDate.removalDate a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "removalDate" ;
-  rdfs:comment "Date when the asset was last removed from service. Ignored if (1) not intended to be in service, or (2) currently in service."@en ;
-  cims:dataType cim:Date ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:LifecycleDate .
-
-cim:LifecycleDate.retiredDate a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "retiredDate" ;
-  rdfs:comment "Date the asset is permanently retired from service and may be scheduled for disposal. Ignored if asset is (1) currently in service, or (2) permanently removed from service."@en ;
-  cims:dataType cim:Date ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:LifecycleDate .
-
 cim:PowerSystemResource.Assets a owl:ObjectProperty ;
   rdfs:label "Assets" ;
   rdfs:comment "All assets represented by this power system resource. For example, multiple conductor assets are electrically modelled as a single AC line segment."@en ;
@@ -310,6 +223,95 @@ cim:UsagePoint.EndDevices a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   owl:inverseOf cim:EndDevice.UsagePoint ;
   rdfs:domain cim:UsagePoint ;
   rdfs:range cim:EndDevice .
+
+cim:Asset.serialNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "serialNumber" ;
+  rdfs:comment "Serial number of this asset."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Asset ;
+  rdfs:range xsd:string .
+
+cim:Asset.type a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "type" ;
+  rdfs:comment "Utility-specific classification of Asset and its subtypes, according to their corporate standards, practices, and existing IT systems (e.g., for management of assets, maintenance, work, outage, customers, etc.)."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Asset ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "description" ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "mRID" ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "name" ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object."@en ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:LifecycleDate.installationDate a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "installationDate" ;
+  rdfs:comment "Date current installation was completed, which may not be the same as the in-service date. Asset may have been installed at other locations previously. Ignored if asset is (1) not currently installed (e.g., stored in a depot) or (2) not intended to be installed (e.g., vehicle, tool)."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:LifecycleDate ;
+  rdfs:range xsd:date .
+
+cim:LifecycleDate.manufacturedDate a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "manufacturedDate" ;
+  rdfs:comment "Date the asset was manufactured."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:LifecycleDate ;
+  rdfs:range xsd:date .
+
+cim:LifecycleDate.purchaseDate a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "purchaseDate" ;
+  rdfs:comment "Date the asset was purchased. Note that even though an asset may have been purchased, it may not have been received into inventory at the time of purchase."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:LifecycleDate ;
+  rdfs:range xsd:date .
+
+cim:LifecycleDate.receivedDate a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "receivedDate" ;
+  rdfs:comment "Date the asset was received and first placed into inventory."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:LifecycleDate ;
+  rdfs:range xsd:date .
+
+cim:LifecycleDate.removalDate a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "removalDate" ;
+  rdfs:comment "Date when the asset was last removed from service. Ignored if (1) not intended to be in service, or (2) currently in service."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:LifecycleDate ;
+  rdfs:range xsd:date .
+
+cim:LifecycleDate.retiredDate a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "retiredDate" ;
+  rdfs:comment "Date the asset is permanently retired from service and may be scheduled for disposal. Ignored if asset is (1) currently in service, or (2) permanently removed from service."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:LifecycleDate ;
+  rdfs:range xsd:date .
 
 as:Package_AssetsProfile a cims:ClassCategory ;
   rdfs:label "AssetsProfile" ;
@@ -339,7 +341,7 @@ cim:CurrentFlow skos:exactMatch quantitykind:ElectricCurrent .
 
 cim:Frequency skos:exactMatch quantitykind:Frequency .
 
-cim:Impedance skos:exactMatch quantitykind:Inductance .
+cim:Impedance skos:exactMatch quantitykind:Impedance .
 
 cim:InUseStateKind.inUse a cim:InUseStateKind ;
   rdfs:label "inUse" ;
@@ -356,10 +358,13 @@ cim:InUseStateKind.readyForUse a cim:InUseStateKind ;
   rdfs:comment "Asset is ready to be put into use."@en ;
   cims:stereotype "enum" .
 
+cim:Inductance skos:exactMatch quantitykind:Inductance .
+
 cim:Length a qudt:QuantityKind ;
   rdfs:label "Length" ;
   rdfs:comment "Unit of length. It shall be a positive value or zero."@en ;
   cims:belongsToCategory as:Package_AssetsProfile ;
+  qudt:applicableUnit cim:UnitSymbol.m ;
   skos:exactMatch quantitykind:Length .
 
 cim:Money skos:exactMatch quantitykind:Currency .
@@ -399,7 +404,9 @@ cim:UnitMultiplier.G a cim:UnitMultiplier ;
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
   rdfs:label "M" ;
   rdfs:comment "Mega 10**6."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E6 ;
+  skos:exactMatch prefix:Mega .
 
 cim:UnitMultiplier.P a cim:UnitMultiplier ;
   rdfs:label "P" ;
@@ -454,7 +461,9 @@ cim:UnitMultiplier.h a cim:UnitMultiplier ;
 cim:UnitMultiplier.k a cim:UnitMultiplier ;
   rdfs:label "k" ;
   rdfs:comment "Kilo 10**3."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E3 ;
+  skos:exactMatch prefix:Kilo .
 
 cim:UnitMultiplier.m a cim:UnitMultiplier ;
   rdfs:label "m" ;
@@ -474,7 +483,8 @@ cim:UnitMultiplier.n a cim:UnitMultiplier ;
 cim:UnitMultiplier.none a cim:UnitMultiplier ;
   rdfs:label "none" ;
   rdfs:comment "No multiplier or equivalently multiply by 1."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E0 .
 
 cim:UnitMultiplier.p a cim:UnitMultiplier ;
   rdfs:label "p" ;
@@ -494,7 +504,8 @@ cim:UnitMultiplier.z a cim:UnitMultiplier ;
 cim:UnitSymbol.A a cim:UnitSymbol ;
   rdfs:label "A" ;
   rdfs:comment "Current in amperes."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:A .
 
 cim:UnitSymbol.A2 a cim:UnitSymbol ;
   rdfs:label "A2" ;
@@ -564,7 +575,8 @@ cim:UnitSymbol.CPerm3 a cim:UnitSymbol ;
 cim:UnitSymbol.F a cim:UnitSymbol ;
   rdfs:label "F" ;
   rdfs:comment "Electric capacitance in farads (C/V)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:FARAD .
 
 cim:UnitSymbol.FPerm a cim:UnitSymbol ;
   rdfs:label "FPerm" ;
@@ -589,7 +601,8 @@ cim:UnitSymbol.GyPers a cim:UnitSymbol ;
 cim:UnitSymbol.H a cim:UnitSymbol ;
   rdfs:label "H" ;
   rdfs:comment "Electric inductance in henrys (Wb/A)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:H .
 
 cim:UnitSymbol.HPerm a cim:UnitSymbol ;
   rdfs:label "HPerm" ;
@@ -599,7 +612,9 @@ cim:UnitSymbol.HPerm a cim:UnitSymbol ;
 cim:UnitSymbol.Hz a cim:UnitSymbol ;
   rdfs:label "Hz" ;
   rdfs:comment "Frequency in hertz (1/s)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:HZ ;
+  skos:narrower unit:REV-PER-SEC .
 
 cim:UnitSymbol.HzPerHz a cim:UnitSymbol ;
   rdfs:label "HzPerHz" ;
@@ -699,7 +714,8 @@ cim:UnitSymbol.Oe a cim:UnitSymbol ;
 cim:UnitSymbol.Pa a cim:UnitSymbol ;
   rdfs:label "Pa" ;
   rdfs:comment "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:PA .
 
 cim:UnitSymbol.PaPers a cim:UnitSymbol ;
   rdfs:label "PaPers" ;
@@ -724,7 +740,8 @@ cim:UnitSymbol.Qh a cim:UnitSymbol ;
 cim:UnitSymbol.S a cim:UnitSymbol ;
   rdfs:label "S" ;
   rdfs:comment "Conductance in siemens."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:S .
 
 cim:UnitSymbol.SPerm a cim:UnitSymbol ;
   rdfs:label "SPerm" ;
@@ -744,7 +761,8 @@ cim:UnitSymbol.T a cim:UnitSymbol ;
 cim:UnitSymbol.V a cim:UnitSymbol ;
   rdfs:label "V" ;
   rdfs:comment "Electric potential in volts (W/A)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V .
 
 cim:UnitSymbol.V2 a cim:UnitSymbol ;
   rdfs:label "V2" ;
@@ -759,7 +777,8 @@ cim:UnitSymbol.V2h a cim:UnitSymbol ;
 cim:UnitSymbol.VA a cim:UnitSymbol ;
   rdfs:label "VA" ;
   rdfs:comment "Apparent power in volt amperes. See also real power and reactive power."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-A .
 
 cim:UnitSymbol.VAh a cim:UnitSymbol ;
   rdfs:label "VAh" ;
@@ -770,7 +789,8 @@ cim:UnitSymbol.VAr a cim:UnitSymbol ;
   rdfs:label "VAr" ;
   rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
 Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."""@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-A_Reactive .
 
 cim:UnitSymbol.VArh a cim:UnitSymbol ;
   rdfs:label "VArh" ;
@@ -795,7 +815,8 @@ cim:UnitSymbol.VPerVA a cim:UnitSymbol ;
 cim:UnitSymbol.VPerVAr a cim:UnitSymbol ;
   rdfs:label "VPerVAr" ;
   rdfs:comment "Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-PER-V-A_Reactive .
 
 cim:UnitSymbol.VPerm a cim:UnitSymbol ;
   rdfs:label "VPerm" ;
@@ -815,12 +836,14 @@ cim:UnitSymbol.Vs a cim:UnitSymbol ;
 cim:UnitSymbol.W a cim:UnitSymbol ;
   rdfs:label "W" ;
   rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W .
 
 cim:UnitSymbol.WPerA a cim:UnitSymbol ;
   rdfs:label "WPerA" ;
   rdfs:comment "Active power per current flow, watts per Ampere."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-PER-A .
 
 cim:UnitSymbol.WPerW a cim:UnitSymbol ;
   rdfs:label "WPerW" ;
@@ -845,7 +868,8 @@ cim:UnitSymbol.WPermK a cim:UnitSymbol ;
 cim:UnitSymbol.WPers a cim:UnitSymbol ;
   rdfs:label "WPers" ;
   rdfs:comment "Ramp rate in watts per second."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-PER-SEC .
 
 cim:UnitSymbol.WPersr a cim:UnitSymbol ;
   rdfs:label "WPersr" ;
@@ -860,7 +884,8 @@ cim:UnitSymbol.Wb a cim:UnitSymbol ;
 cim:UnitSymbol.Wh a cim:UnitSymbol ;
   rdfs:label "Wh" ;
   rdfs:comment "Real energy in watt hours."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-HR .
 
 cim:UnitSymbol.anglemin a cim:UnitSymbol ;
   rdfs:label "anglemin" ;
@@ -922,13 +947,15 @@ cim:UnitSymbol.dBm a cim:UnitSymbol ;
 cim:UnitSymbol.deg a cim:UnitSymbol ;
   rdfs:label "deg" ;
   rdfs:comment "Plane angle in degrees."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:DEG .
 
 cim:UnitSymbol.degC a cim:UnitSymbol ;
   rdfs:label "degC" ;
   rdfs:comment """Relative temperature in degrees Celsius.
 In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software."""@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:DEG_C .
 
 cim:UnitSymbol.ft3 a cim:UnitSymbol ;
   rdfs:label "ft3" ;
@@ -1028,12 +1055,14 @@ cim:UnitSymbol.lx a cim:UnitSymbol ;
 cim:UnitSymbol.m a cim:UnitSymbol ;
   rdfs:label "m" ;
   rdfs:comment "Length in metres."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M .
 
 cim:UnitSymbol.m2 a cim:UnitSymbol ;
   rdfs:label "m2" ;
   rdfs:comment "Area in square metres (m²)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M2 .
 
 cim:UnitSymbol.m2Pers a cim:UnitSymbol ;
   rdfs:label "m2Pers" ;
@@ -1063,7 +1092,8 @@ cim:UnitSymbol.m3Perkg a cim:UnitSymbol ;
 cim:UnitSymbol.m3Pers a cim:UnitSymbol ;
   rdfs:label "m3Pers" ;
   rdfs:comment "Volumetric flow rate in cubic metres per second (m³/s)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M3-PER-SEC .
 
 cim:UnitSymbol.m3Uncompensated a cim:UnitSymbol ;
   rdfs:label "m3Uncompensated" ;
@@ -1123,7 +1153,8 @@ cim:UnitSymbol.none a cim:UnitSymbol ;
 cim:UnitSymbol.ohm a cim:UnitSymbol ;
   rdfs:label "ohm" ;
   rdfs:comment "Electric resistance in ohms (V/A)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:OHM .
 
 cim:UnitSymbol.ohmPerm a cim:UnitSymbol ;
   rdfs:label "ohmPerm" ;
@@ -1153,7 +1184,8 @@ cim:UnitSymbol.ppm a cim:UnitSymbol ;
 cim:UnitSymbol.rad a cim:UnitSymbol ;
   rdfs:label "rad" ;
   rdfs:comment "Plane angle in radians (m/m)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:RAD .
 
 cim:UnitSymbol.radPers a cim:UnitSymbol ;
   rdfs:label "radPers" ;
@@ -1178,7 +1210,8 @@ cim:UnitSymbol.rotPers a cim:UnitSymbol ;
 cim:UnitSymbol.s a cim:UnitSymbol ;
   rdfs:label "s" ;
   rdfs:comment "Time in seconds."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:SEC .
 
 cim:UnitSymbol.sPers a cim:UnitSymbol ;
   rdfs:label "sPers" ;

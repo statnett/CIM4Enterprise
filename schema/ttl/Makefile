@@ -5,11 +5,11 @@ FIXME = ../../../ENTSOE-SHACL/Inst4CIM-KG/rdfs-improved
 all: $(TTL) asset-terms-in-telemark-120.md asset-terms-in-nordic-telemark.md
 
 %.ttl: ../rdf/%.rdf
-	update.bat --update=$(FIXME)/fix-all.ru --data=$^ --dump |\
-	  perl $(FIXME)/fix-namespaces.pl |\
+	perl $(FIXME)/fix-namespaces.pl $^ > temp.rdf
+	update.bat --update=$(FIXME)/fix-all.ru --data=temp.rdf --dump |\
 	  cat $(FIXME)/prefixes.ttl - > temp.ttl
 	owl.bat write --prefixAlign=right --useCommaByDefault temp.ttl $@
-	rm temp.ttl
+	rm temp.rdf temp.ttl
 
 asset-terms-in-telemark-120.md: ../../asset-terms-in-telemark-120.pl
 	perl $^ > $@
