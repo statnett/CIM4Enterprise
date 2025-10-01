@@ -9,10 +9,12 @@
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
 @prefix      dcterms: <http://purl.org/dc/terms/> .
+@prefix       prefix: <http://qudt.org/vocab/prefix/> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix         qudt: <http://qudt.org/schema/qudt/> .
 @prefix         skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
+@prefix         unit: <http://qudt.org/vocab/unit/> .
 
 ac:Ontology a owl:Ontology ;
   dcterms:description "This vocabulary is describing the asset catalogue profile from IEC 61968-13:2021."@en ;
@@ -200,31 +202,6 @@ cim:AssetInfo.ProductAssetModel a owl:ObjectProperty, owl:FunctionalProperty, ow
   rdfs:domain cim:AssetInfo ;
   rdfs:range cim:ProductAssetModel .
 
-cim:IdentifiedObject.description a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "description" ;
-  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:IdentifiedObject .
-
-cim:IdentifiedObject.mRID a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:IdentifiedObject .
-
-cim:IdentifiedObject.name a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "name" ;
-  rdfs:comment "The name is any free human readable and possibly non unique text naming the object."@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:IdentifiedObject .
-
 cim:Manufacturer.ProductAssetModels a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "ProductAssetModels" ;
   rdfs:comment "All asset models by this manufacturer."@en ;
@@ -251,22 +228,6 @@ cim:ProductAssetModel.Manufacturer a owl:ObjectProperty, owl:FunctionalProperty 
   owl:inverseOf cim:Manufacturer.ProductAssetModels ;
   rdfs:domain cim:ProductAssetModel ;
   rdfs:range cim:Manufacturer .
-
-cim:ProductAssetModel.modelNumber a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "modelNumber" ;
-  rdfs:comment "Manufacturer's model number."@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:ProductAssetModel .
-
-cim:ProductAssetModel.modelVersion a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "modelVersion" ;
-  rdfs:comment "Version number for product model, which indicates vintage of the product."@en ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:ProductAssetModel .
 
 cim:ProductAssetModel.usageKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "usageKind" ;
@@ -300,26 +261,10 @@ cim:SwitchInfo.breakingCapacity a owl:ObjectProperty, owl:FunctionalProperty ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:SwitchInfo .
 
-cim:SwitchInfo.isUnganged a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "isUnganged" ;
-  rdfs:comment "If true, the switch is not ganged (i.e., a switch phase may be operated separately from other phases)."@en ;
-  cims:dataType cim:Boolean ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:SwitchInfo .
-
 cim:SwitchInfo.ratedCurrent a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "ratedCurrent" ;
   rdfs:comment "Rated current."@en ;
   cims:dataType cim:CurrentFlow ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:SwitchInfo .
-
-cim:SwitchInfo.ratedInterruptingTime a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "ratedInterruptingTime" ;
-  rdfs:comment "Switch rated interrupting time in seconds."@en ;
-  cims:dataType cim:Seconds ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:SwitchInfo .
@@ -336,22 +281,6 @@ cim:TapChangerInfo.ctRating a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "ctRating" ;
   rdfs:comment "Built-in current transformer primary rating."@en ;
   cims:dataType cim:CurrentFlow ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:TapChangerInfo .
-
-cim:TapChangerInfo.ctRatio a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "ctRatio" ;
-  rdfs:comment "Built-in current transducer ratio."@en ;
-  cims:dataType cim:Float ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:TapChangerInfo .
-
-cim:TapChangerInfo.ptRatio a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "ptRatio" ;
-  rdfs:comment "Built-in voltage transducer ratio."@en ;
-  cims:dataType cim:Float ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:TapChangerInfo .
@@ -467,14 +396,6 @@ cim:WireInfo.gmr a owl:ObjectProperty, owl:FunctionalProperty ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:WireInfo .
 
-cim:WireInfo.insulated a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "insulated" ;
-  rdfs:comment "True if conductor is insulated."@en ;
-  cims:dataType cim:Boolean ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:WireInfo .
-
 cim:WireInfo.insulationMaterial a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "insulationMaterial" ;
   rdfs:comment "(if insulated conductor) Material used for insulation."@en ;
@@ -482,30 +403,6 @@ cim:WireInfo.insulationMaterial a owl:ObjectProperty, owl:FunctionalProperty ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:WireInfo ;
   rdfs:range cim:WireInsulationKind .
-
-cim:WireInfo.rAC25 a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "rAC25" ;
-  rdfs:comment "AC resistance per unit length of the conductor at 25 °C."@en ;
-  cims:dataType cim:ResistancePerLength ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:WireInfo .
-
-cim:WireInfo.rAC50 a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "rAC50" ;
-  rdfs:comment "AC resistance per unit length of the conductor at 50 °C."@en ;
-  cims:dataType cim:ResistancePerLength ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:WireInfo .
-
-cim:WireInfo.rAC75 a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "rAC75" ;
-  rdfs:comment "AC resistance per unit length of the conductor at 75 °C."@en ;
-  cims:dataType cim:ResistancePerLength ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:WireInfo .
 
 cim:WireInfo.radius a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "radius" ;
@@ -519,14 +416,6 @@ cim:WireInfo.ratedCurrent a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "ratedCurrent" ;
   rdfs:comment "Current carrying capacity of the wire under stated thermal conditions."@en ;
   cims:dataType cim:CurrentFlow ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:WireInfo .
-
-cim:WireInfo.sizeDescription a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "sizeDescription" ;
-  rdfs:comment "Describes the wire gauge or cross section (e.g., 4/0, #2, 336.5)."@en ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:WireInfo .
@@ -575,22 +464,6 @@ cim:WirePosition.WireSpacingInfo a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:domain cim:WirePosition ;
   rdfs:range cim:WireSpacingInfo .
 
-cim:WirePosition.xCoord a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "xCoord" ;
-  rdfs:comment "Signed horizontal distance from the wire at this position to a common reference point."@en ;
-  cims:dataType cim:Displacement ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:WirePosition .
-
-cim:WirePosition.yCoord a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "yCoord" ;
-  rdfs:comment "Signed vertical distance from the wire at this position: above ground (positive value) or burial depth below ground (negative value)."@en ;
-  cims:dataType cim:Displacement ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:WirePosition .
-
 cim:WireSpacingInfo.WirePositions a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "WirePositions" ;
   rdfs:comment "All positions of single wires (phase or neutral) making the conductor."@en ;
@@ -608,21 +481,169 @@ cim:WireSpacingInfo.usage a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:domain cim:WireSpacingInfo ;
   rdfs:range cim:WireUsageKind .
 
-<http://iec.ch/TC57/ns/CIM#CableInfo.conduitSize> a owl:ObjectProperty, owl:FunctionalProperty ;
+cim:CableInfo.conduitSize a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "conduitSize" ;
   rdfs:comment "conduitSize."@en ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "avista", uml:attribute ;
-  rdfs:domain cim:CableInfo .
+  rdfs:domain cim:CableInfo ;
+  rdfs:range xsd:string .
 
-<http://iec.ch/TC57/ns/CIM#CableInfo.isServiceConduit> a owl:ObjectProperty, owl:FunctionalProperty ;
+cim:CableInfo.isServiceConduit a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "isServiceConduit" ;
   rdfs:comment "isServiceConduit."@en ;
-  cims:dataType cim:Boolean ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "avista", uml:attribute ;
-  rdfs:domain cim:CableInfo .
+  rdfs:domain cim:CableInfo ;
+  rdfs:range xsd:boolean .
+
+cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "description" ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "mRID" ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "name" ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object."@en ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:ProductAssetModel.modelNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "modelNumber" ;
+  rdfs:comment "Manufacturer's model number."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:ProductAssetModel ;
+  rdfs:range xsd:string .
+
+cim:ProductAssetModel.modelVersion a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "modelVersion" ;
+  rdfs:comment "Version number for product model, which indicates vintage of the product."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:ProductAssetModel ;
+  rdfs:range xsd:string .
+
+cim:SwitchInfo.isUnganged a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "isUnganged" ;
+  rdfs:comment "If true, the switch is not ganged (i.e., a switch phase may be operated separately from other phases)."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:SwitchInfo ;
+  rdfs:range xsd:boolean .
+
+cim:SwitchInfo.ratedInterruptingTime a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "ratedInterruptingTime" ;
+  rdfs:comment "Switch rated interrupting time in seconds."@en ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.s ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:Seconds ;
+  qudt:hasUnit unit:SEC ;
+  rdfs:domain cim:SwitchInfo ;
+  rdfs:range xsd:float .
+
+cim:TapChangerInfo.ctRatio a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "ctRatio" ;
+  rdfs:comment "Built-in current transducer ratio."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:TapChangerInfo ;
+  rdfs:range xsd:float .
+
+cim:TapChangerInfo.ptRatio a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "ptRatio" ;
+  rdfs:comment "Built-in voltage transducer ratio."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:TapChangerInfo ;
+  rdfs:range xsd:float .
+
+cim:WireInfo.insulated a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "insulated" ;
+  rdfs:comment "True if conductor is insulated."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:WireInfo ;
+  rdfs:range xsd:boolean .
+
+cim:WireInfo.rAC25 a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "rAC25" ;
+  rdfs:comment "AC resistance per unit length of the conductor at 25 °C."@en ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.ohmPerm ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:ResistancePerLength ;
+  rdfs:domain cim:WireInfo ;
+  rdfs:range xsd:float .
+
+cim:WireInfo.rAC50 a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "rAC50" ;
+  rdfs:comment "AC resistance per unit length of the conductor at 50 °C."@en ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.ohmPerm ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:ResistancePerLength ;
+  rdfs:domain cim:WireInfo ;
+  rdfs:range xsd:float .
+
+cim:WireInfo.rAC75 a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "rAC75" ;
+  rdfs:comment "AC resistance per unit length of the conductor at 75 °C."@en ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.ohmPerm ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:ResistancePerLength ;
+  rdfs:domain cim:WireInfo ;
+  rdfs:range xsd:float .
+
+cim:WireInfo.sizeDescription a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "sizeDescription" ;
+  rdfs:comment "Describes the wire gauge or cross section (e.g., 4/0, #2, 336.5)."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:WireInfo ;
+  rdfs:range xsd:string .
+
+cim:WirePosition.xCoord a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "xCoord" ;
+  rdfs:comment "Signed horizontal distance from the wire at this position to a common reference point."@en ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.m ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:Displacement ;
+  rdfs:domain cim:WirePosition ;
+  rdfs:range xsd:float .
+
+cim:WirePosition.yCoord a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "yCoord" ;
+  rdfs:comment "Signed vertical distance from the wire at this position: above ground (positive value) or burial depth below ground (negative value)."@en ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.m ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:Displacement ;
+  rdfs:domain cim:WirePosition ;
+  rdfs:range xsd:float .
 
 ac:Package_AssetCatalogueProfile a cims:ClassCategory ;
   rdfs:label "AssetCatalogueProfile" ;
@@ -644,6 +665,7 @@ cim:ApparentPower a qudt:QuantityKind ;
   rdfs:label "ApparentPower" ;
   rdfs:comment "Product of the RMS value of the voltage and the RMS value of the current."@en ;
   cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.VA ;
   skos:exactMatch quantitykind:ApparentPower .
 
 cim:Area skos:exactMatch quantitykind:Area .
@@ -696,21 +718,26 @@ cim:CurrentFlow a qudt:QuantityKind ;
   rdfs:label "CurrentFlow" ;
   rdfs:comment "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC."@en ;
   cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.A ;
   skos:exactMatch quantitykind:ElectricCurrent .
 
 cim:Displacement a qudt:QuantityKind ;
   rdfs:label "Displacement" ;
   rdfs:comment "Unit of displacement relative to a reference position, hence can be negative."@en ;
-  cims:belongsToCategory ac:Package_AssetCatalogueProfile .
+  cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.m .
 
 cim:Frequency skos:exactMatch quantitykind:Frequency .
 
-cim:Impedance skos:exactMatch quantitykind:Inductance .
+cim:Impedance skos:exactMatch quantitykind:Impedance .
+
+cim:Inductance skos:exactMatch quantitykind:Inductance .
 
 cim:Length a qudt:QuantityKind ;
   rdfs:label "Length" ;
   rdfs:comment "Unit of length. It shall be a positive value or zero."@en ;
   cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.m ;
   skos:exactMatch quantitykind:Length .
 
 cim:Money skos:exactMatch quantitykind:Currency .
@@ -725,12 +752,14 @@ cim:Reactance a qudt:QuantityKind ;
   rdfs:label "Reactance" ;
   rdfs:comment "Reactance (imaginary part of impedance), at rated frequency."@en ;
   cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.ohm ;
   skos:exactMatch quantitykind:Reactance .
 
 cim:ReactivePower a qudt:QuantityKind ;
   rdfs:label "ReactivePower" ;
   rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current."@en ;
   cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.VAr ;
   skos:exactMatch quantitykind:ReactivePower .
 
 cim:RealEnergy skos:exactMatch quantitykind:Energy .
@@ -740,7 +769,8 @@ cim:Resistance skos:exactMatch quantitykind:Resistance .
 cim:ResistancePerLength a qudt:QuantityKind ;
   rdfs:label "ResistancePerLength" ;
   rdfs:comment "Resistance (real part of impedance) per unit of length."@en ;
-  cims:belongsToCategory ac:Package_AssetCatalogueProfile .
+  cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.ohmPerm .
 
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 
@@ -748,6 +778,7 @@ cim:Seconds a qudt:QuantityKind ;
   rdfs:label "Seconds" ;
   rdfs:comment "Time, in seconds."@en ;
   cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.s ;
   skos:exactMatch quantitykind:Time .
 
 cim:SinglePhaseKind.A a cim:SinglePhaseKind ;
@@ -797,7 +828,9 @@ cim:UnitMultiplier.G a cim:UnitMultiplier ;
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
   rdfs:label "M" ;
   rdfs:comment "Mega 10**6."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E6 ;
+  skos:exactMatch prefix:Mega .
 
 cim:UnitMultiplier.P a cim:UnitMultiplier ;
   rdfs:label "P" ;
@@ -852,7 +885,9 @@ cim:UnitMultiplier.h a cim:UnitMultiplier ;
 cim:UnitMultiplier.k a cim:UnitMultiplier ;
   rdfs:label "k" ;
   rdfs:comment "Kilo 10**3."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E3 ;
+  skos:exactMatch prefix:Kilo .
 
 cim:UnitMultiplier.m a cim:UnitMultiplier ;
   rdfs:label "m" ;
@@ -872,7 +907,8 @@ cim:UnitMultiplier.n a cim:UnitMultiplier ;
 cim:UnitMultiplier.none a cim:UnitMultiplier ;
   rdfs:label "none" ;
   rdfs:comment "No multiplier or equivalently multiply by 1."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E0 .
 
 cim:UnitMultiplier.p a cim:UnitMultiplier ;
   rdfs:label "p" ;
@@ -892,7 +928,8 @@ cim:UnitMultiplier.z a cim:UnitMultiplier ;
 cim:UnitSymbol.A a cim:UnitSymbol ;
   rdfs:label "A" ;
   rdfs:comment "Current in amperes."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:A .
 
 cim:UnitSymbol.A2 a cim:UnitSymbol ;
   rdfs:label "A2" ;
@@ -962,7 +999,8 @@ cim:UnitSymbol.CPerm3 a cim:UnitSymbol ;
 cim:UnitSymbol.F a cim:UnitSymbol ;
   rdfs:label "F" ;
   rdfs:comment "Electric capacitance in farads (C/V)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:FARAD .
 
 cim:UnitSymbol.FPerm a cim:UnitSymbol ;
   rdfs:label "FPerm" ;
@@ -987,7 +1025,8 @@ cim:UnitSymbol.GyPers a cim:UnitSymbol ;
 cim:UnitSymbol.H a cim:UnitSymbol ;
   rdfs:label "H" ;
   rdfs:comment "Electric inductance in henrys (Wb/A)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:H .
 
 cim:UnitSymbol.HPerm a cim:UnitSymbol ;
   rdfs:label "HPerm" ;
@@ -997,7 +1036,9 @@ cim:UnitSymbol.HPerm a cim:UnitSymbol ;
 cim:UnitSymbol.Hz a cim:UnitSymbol ;
   rdfs:label "Hz" ;
   rdfs:comment "Frequency in hertz (1/s)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:HZ ;
+  skos:narrower unit:REV-PER-SEC .
 
 cim:UnitSymbol.HzPerHz a cim:UnitSymbol ;
   rdfs:label "HzPerHz" ;
@@ -1097,7 +1138,8 @@ cim:UnitSymbol.Oe a cim:UnitSymbol ;
 cim:UnitSymbol.Pa a cim:UnitSymbol ;
   rdfs:label "Pa" ;
   rdfs:comment "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:PA .
 
 cim:UnitSymbol.PaPers a cim:UnitSymbol ;
   rdfs:label "PaPers" ;
@@ -1122,7 +1164,8 @@ cim:UnitSymbol.Qh a cim:UnitSymbol ;
 cim:UnitSymbol.S a cim:UnitSymbol ;
   rdfs:label "S" ;
   rdfs:comment "Conductance in siemens."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:S .
 
 cim:UnitSymbol.SPerm a cim:UnitSymbol ;
   rdfs:label "SPerm" ;
@@ -1142,7 +1185,8 @@ cim:UnitSymbol.T a cim:UnitSymbol ;
 cim:UnitSymbol.V a cim:UnitSymbol ;
   rdfs:label "V" ;
   rdfs:comment "Electric potential in volts (W/A)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V .
 
 cim:UnitSymbol.V2 a cim:UnitSymbol ;
   rdfs:label "V2" ;
@@ -1157,7 +1201,8 @@ cim:UnitSymbol.V2h a cim:UnitSymbol ;
 cim:UnitSymbol.VA a cim:UnitSymbol ;
   rdfs:label "VA" ;
   rdfs:comment "Apparent power in volt amperes. See also real power and reactive power."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-A .
 
 cim:UnitSymbol.VAh a cim:UnitSymbol ;
   rdfs:label "VAh" ;
@@ -1168,7 +1213,8 @@ cim:UnitSymbol.VAr a cim:UnitSymbol ;
   rdfs:label "VAr" ;
   rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
 Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."""@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-A_Reactive .
 
 cim:UnitSymbol.VArh a cim:UnitSymbol ;
   rdfs:label "VArh" ;
@@ -1193,7 +1239,8 @@ cim:UnitSymbol.VPerVA a cim:UnitSymbol ;
 cim:UnitSymbol.VPerVAr a cim:UnitSymbol ;
   rdfs:label "VPerVAr" ;
   rdfs:comment "Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-PER-V-A_Reactive .
 
 cim:UnitSymbol.VPerm a cim:UnitSymbol ;
   rdfs:label "VPerm" ;
@@ -1213,12 +1260,14 @@ cim:UnitSymbol.Vs a cim:UnitSymbol ;
 cim:UnitSymbol.W a cim:UnitSymbol ;
   rdfs:label "W" ;
   rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W .
 
 cim:UnitSymbol.WPerA a cim:UnitSymbol ;
   rdfs:label "WPerA" ;
   rdfs:comment "Active power per current flow, watts per Ampere."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-PER-A .
 
 cim:UnitSymbol.WPerW a cim:UnitSymbol ;
   rdfs:label "WPerW" ;
@@ -1243,7 +1292,8 @@ cim:UnitSymbol.WPermK a cim:UnitSymbol ;
 cim:UnitSymbol.WPers a cim:UnitSymbol ;
   rdfs:label "WPers" ;
   rdfs:comment "Ramp rate in watts per second."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-PER-SEC .
 
 cim:UnitSymbol.WPersr a cim:UnitSymbol ;
   rdfs:label "WPersr" ;
@@ -1258,7 +1308,8 @@ cim:UnitSymbol.Wb a cim:UnitSymbol ;
 cim:UnitSymbol.Wh a cim:UnitSymbol ;
   rdfs:label "Wh" ;
   rdfs:comment "Real energy in watt hours."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-HR .
 
 cim:UnitSymbol.anglemin a cim:UnitSymbol ;
   rdfs:label "anglemin" ;
@@ -1320,13 +1371,15 @@ cim:UnitSymbol.dBm a cim:UnitSymbol ;
 cim:UnitSymbol.deg a cim:UnitSymbol ;
   rdfs:label "deg" ;
   rdfs:comment "Plane angle in degrees."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:DEG .
 
 cim:UnitSymbol.degC a cim:UnitSymbol ;
   rdfs:label "degC" ;
   rdfs:comment """Relative temperature in degrees Celsius.
 In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software."""@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:DEG_C .
 
 cim:UnitSymbol.ft3 a cim:UnitSymbol ;
   rdfs:label "ft3" ;
@@ -1426,12 +1479,14 @@ cim:UnitSymbol.lx a cim:UnitSymbol ;
 cim:UnitSymbol.m a cim:UnitSymbol ;
   rdfs:label "m" ;
   rdfs:comment "Length in metres."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M .
 
 cim:UnitSymbol.m2 a cim:UnitSymbol ;
   rdfs:label "m2" ;
   rdfs:comment "Area in square metres (m²)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M2 .
 
 cim:UnitSymbol.m2Pers a cim:UnitSymbol ;
   rdfs:label "m2Pers" ;
@@ -1461,7 +1516,8 @@ cim:UnitSymbol.m3Perkg a cim:UnitSymbol ;
 cim:UnitSymbol.m3Pers a cim:UnitSymbol ;
   rdfs:label "m3Pers" ;
   rdfs:comment "Volumetric flow rate in cubic metres per second (m³/s)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M3-PER-SEC .
 
 cim:UnitSymbol.m3Uncompensated a cim:UnitSymbol ;
   rdfs:label "m3Uncompensated" ;
@@ -1521,7 +1577,8 @@ cim:UnitSymbol.none a cim:UnitSymbol ;
 cim:UnitSymbol.ohm a cim:UnitSymbol ;
   rdfs:label "ohm" ;
   rdfs:comment "Electric resistance in ohms (V/A)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:OHM .
 
 cim:UnitSymbol.ohmPerm a cim:UnitSymbol ;
   rdfs:label "ohmPerm" ;
@@ -1551,7 +1608,8 @@ cim:UnitSymbol.ppm a cim:UnitSymbol ;
 cim:UnitSymbol.rad a cim:UnitSymbol ;
   rdfs:label "rad" ;
   rdfs:comment "Plane angle in radians (m/m)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:RAD .
 
 cim:UnitSymbol.radPers a cim:UnitSymbol ;
   rdfs:label "radPers" ;
@@ -1576,7 +1634,8 @@ cim:UnitSymbol.rotPers a cim:UnitSymbol ;
 cim:UnitSymbol.s a cim:UnitSymbol ;
   rdfs:label "s" ;
   rdfs:comment "Time in seconds."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:SEC .
 
 cim:UnitSymbol.sPers a cim:UnitSymbol ;
   rdfs:label "sPers" ;
@@ -1602,6 +1661,7 @@ cim:Voltage a qudt:QuantityKind ;
   rdfs:label "Voltage" ;
   rdfs:comment "Electrical voltage, can be both AC and DC."@en ;
   cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  qudt:applicableUnit cim:UnitSymbol.V ;
   skos:exactMatch quantitykind:Voltage .
 
 cim:VoltagePerReactivePower skos:exactMatch quantitykind:VoltagePerReactivePower .
