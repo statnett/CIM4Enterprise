@@ -29,13 +29,25 @@ CONSTRUCT {
         _:pv :Value ?pvLabel .
         _:pv :Description ?pvDef .
         _:pv :OwnedUri ?propVal .
+    ?prop :PropertyRelations _:r .
+        _:r :RelatedPropertyName ?relRelLab .
+        _:r :RelatedPropertyUri ?rel .
+        _:r :RelationType ?relRel .
+        _:r :OwnedUri ?relUri .
 } WHERE {
-    VALUES ?class {cim:PowerTransformerEnd}
+    VALUES ?class {cim:PowerTransformerEnd cim:Switch}
     GRAPH onto:explicit {
         ?class a owl:Class .
         { ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
               a owl:DatatypeProperty .
           BIND(REPLACE(STR(?prop), "https://cim.ucaiug.io/ns#", "") as ?pCode) .
+          OPTIONAL {
+              ?rel owl:inverseOf ?prop .
+              ?rel rdfs:label ?relRelLab
+              BIND("HasReference" as ?relRel) .
+              BIND(CONCAT(STR(?prop), ?relRel, REPLACE(STR(?rel), "https://cim.ucaiug.io/ns#", "")) as ?relUri)
+              FILTER(?prop != ?rel)
+          }
           OPTIONAL {?prop rdfs:label ?pLab} .
           OPTIONAL {?prop rdfs:comment ?pDesc}  .
           OPTIONAL {?prop qudt:hasUnit ?unit .

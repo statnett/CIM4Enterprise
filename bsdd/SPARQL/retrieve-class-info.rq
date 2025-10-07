@@ -9,7 +9,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX : <:>
 
 CONSTRUCT {
-    ?class :Code ?class .
+    ?class :Code ?cCode .
     ?class :Name ?cName .
     ?class :ClassType "Class" .
     ?class :Definition ?cDef .
@@ -21,25 +21,26 @@ CONSTRUCT {
     ?class :Status "Active" .
     ?class :ClassProperties _:p .
         _:p :Code ?pCode .
-        _:p :PropertyUri ?pCode .
+        _:p :PropertyUri ?prop .
         _:p :Description ?pDesc .
         _:p :Unit ?pUnit .
-        _:p :OwnedUri ?pCode .
+        _:p :OwnedUri ?prop .
         _:p :PropertyType "Property" .
         _:p :AllowedValues _:pv .
             _:pv :Code ?pvCode .
             _:pv :Value ?pvLabel .
             _:pv :Description ?pvDef .
-            _:pv :OwnedUri ?pvCode .
+            _:pv :OwnedUri ?pval .
     ?class :ClassRelations _:r .
         _:r :RelationType ?classRel .
         _:r :RelatedClassUri ?rel .
         _:r :RelatedClassName ?classRelLab .
         _:r :OwnedUri ?rel .
 } WHERE {
-    VALUES ?class {cim:Switch}
+    VALUES ?class {cim:PowerTransformerEnd cim:Switch}
     GRAPH onto:explicit {
         ?class a owl:Class
+        BIND(REPLACE(STR(?class), "https://cim.ucaiug.io/ns#", "") as ?cCode) .
         OPTIONAL {?class rdfs:label ?cName} .
         OPTIONAL {?class rdfs:comment ?cDef} .
         OPTIONAL {?class rdfs:subClassOf ?parentClass }
@@ -47,24 +48,27 @@ CONSTRUCT {
             ?rel rdfs:subClassOf|^rdfs:subClassOf* ?class .
             ?rel rdfs:label ?classRelLab
             BIND(IF(EXISTS {?rel rdfs:subClassOf ?class}, "IsChildOf", "IsParentOf") as ?classRel) .
+            BIND(CONCAT(STR(?class), ?classRel, REPLACE(STR(?rel), "https://cim.ucaiug.io/ns#", "")) as ?relUri)
             FILTER(?class != ?rel)
         }
         OPTIONAL {
-            { ?pCode rdfs:domain/^rdfs:subClassOf* ?class ;
+            { ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
                   a owl:DatatypeProperty .
-              OPTIONAL {?pCode rdfs:comment ?pDesc}  .
-              OPTIONAL {?pCode qudt:hasUnit/qudt:symbol ?pUnit}
+              BIND(REPLACE(STR(?prop), "https://cim.ucaiug.io/ns#", "") as ?pCode) .
+              OPTIONAL {?prop rdfs:comment ?pDesc}  .
+              OPTIONAL {?prop qudt:hasUnit/qudt:symbol ?pUnit}
             }
             UNION
-            { ?pCode rdfs:domain/^rdfs:subClassOf* ?class ;
+            { ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
                   a owl:ObjectProperty ;
                   rdfs:range ?range .
               ?range cims:stereotype uml:enumeration .
-              OPTIONAL {?pCode rdfs:comment ?pDesc}  .
+              OPTIONAL {?prop rdfs:comment ?pDesc}  .
               OPTIONAL {
-                  ?pvCode rdf:type ?range ;
+                  ?pval rdf:type ?range ;
                       rdfs:label ?pvLabel ;
                       rdfs:comment ?pvDef .
+                  BIND(REPLACE(STR(?pval), "https://cim.ucaiug.io/ns#", "") as ?pvCode) .
               }
             }
         }
