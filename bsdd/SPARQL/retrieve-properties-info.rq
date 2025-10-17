@@ -15,9 +15,7 @@ CONSTRUCT {
     ?prop :Definition ?pDesc .
     ?prop :DataType ?pDtype .
     ?prop :Units _:u .
-        _:u :Unit ?pUnit .
-    ?prop :CountriesOfUse "[NO]" .
-    ?prop :CountryOfOrigin "NO" .
+        _:u :Unit ?unit .
     ?prop :CreatorLanguageIsoCode "EN" .
     ?prop :Dimension ?pUnitDv .
     ?prop :IsDynamic "false"^^xsd:boolean .
@@ -29,11 +27,6 @@ CONSTRUCT {
         _:pv :Value ?pvLabel .
         _:pv :Description ?pvDef .
         _:pv :OwnedUri ?propVal .
-    ?prop :PropertyRelations _:r .
-        _:r :RelatedPropertyName ?relRelLab .
-        _:r :RelatedPropertyUri ?rel .
-        _:r :RelationType ?relRel .
-        _:r :OwnedUri ?relUri .
 } WHERE {
     VALUES ?class {cim:PowerTransformerEnd cim:Switch}
     GRAPH onto:explicit {
@@ -41,24 +34,17 @@ CONSTRUCT {
         { ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
               a owl:DatatypeProperty .
           BIND(REPLACE(STR(?prop), "https://cim.ucaiug.io/ns#", "") as ?pCode) .
-          OPTIONAL {
-              ?rel owl:inverseOf ?prop .
-              ?rel rdfs:label ?relRelLab
-              BIND("HasReference" as ?relRel) .
-              BIND(CONCAT(STR(?prop), ?relRel, REPLACE(STR(?rel), "https://cim.ucaiug.io/ns#", "")) as ?relUri)
-              FILTER(?prop != ?rel)
-          }
           OPTIONAL {?prop rdfs:label ?pLab} .
           OPTIONAL {?prop rdfs:comment ?pDesc}  .
           OPTIONAL {?prop qudt:hasUnit ?unit .
-                    ?unit qudt:symbol ?pUnit ;
-                        qudt:hasDimensionVector/rdfs:label ?pUnitDv }
+                    ?unit qudt:hasDimensionVector ?unitDv }
+          BIND(SUBSTR(REPLACE(REPLACE(STR(?unitDv), "http://qudt.org/vocab/dimensionvector/", ""), "[A-Z]", " "), 2) as ?pUnitDv)
           OPTIONAL {?prop rdfs:range ?range .
                     BIND(IF(?range IN (xsd:float, xsd:double), "Real",
                              IF(?range IN (xsd:integer), "Integer",
                                  IF(?range IN (xsd:string), "String",
                                      IF(?range IN (xsd:boolean), "Boolean",
-                                         IF(?range IN (xsd:time, xsd:dateTime, xsd:date, xsd:duration), "Boolean", "String")))))
+                                         IF(?range IN (xsd:time, xsd:dateTime, xsd:date, xsd:duration), "Time", "String")))))
                         as ?pDtype) .
           }
           OPTIONAL {?prop qudt:hasQuantityKind/rdfs:label ?pQuant}
@@ -78,10 +64,6 @@ CONSTRUCT {
               BIND(REPLACE(STR(?propVal), "https://cim.ucaiug.io/ns#", "") as ?pvCode) .
           }
           BIND("String" as ?pDtype) .
-          OPTIONAL {?prop qudt:hasUnit ?unit .
-                    ?unit qudt:symbol ?pUnit ;
-                        qudt:hasDimensionVector/rdfs:label ?pUnitDv }
-          OPTIONAL {?prop qudt:hasQuantityKind/rdfs:label ?pQuant}
         }
     }
 }

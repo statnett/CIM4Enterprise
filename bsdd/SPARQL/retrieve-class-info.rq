@@ -14,8 +14,6 @@ CONSTRUCT {
     ?class :ClassType "Class" .
     ?class :Definition ?cDef .
     ?class :ParentClassCode ?parentClass .
-    ?class :CountriesOfUse "[NO]" .
-    ?class :CountryOfOrigin "NO" .
     ?class :CreatorLanguageIsoCode "EN" .
     ?class :OwnedUri ?class .
     ?class :Status "Active" .
@@ -56,7 +54,7 @@ CONSTRUCT {
                   a owl:DatatypeProperty .
               BIND(REPLACE(STR(?prop), "https://cim.ucaiug.io/ns#", "") as ?pCode) .
               OPTIONAL {?prop rdfs:comment ?pDesc}  .
-              OPTIONAL {?prop qudt:hasUnit/qudt:symbol ?pUnit}
+              OPTIONAL {?prop qudt:hasUnit ?pUnit}
             }
             UNION
             { ?prop rdfs:domain/^rdfs:subClassOf* ?class ;

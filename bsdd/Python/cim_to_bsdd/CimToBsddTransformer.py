@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+from datetime import datetime
 from http import HTTPMethod
 from io import StringIO
 from time import sleep
@@ -20,24 +21,25 @@ args = parser.parse_args()
 HEADER_GDB_QUERY = {"Content-type": "application/sparql-query", 'Accept': '*/*'}
 PATH_QUERY_CLASS_INFO = '/bsdd/SPARQL/retrieve-class-info.rq'
 PATH_QUERY_PROP_INFO = '/bsdd/SPARQL/retrieve-properties-info.rq'
+URL_BSDD_QUDT_MAP = 'https://api.bsdd.buildingsmart.org/api/Unit/v1'
 BSDD_IMPORT =  {
   "ModelVersion": "2.0",
   "OrganizationCode": "ucaiug",
   "DictionaryCode": "cim",
-  "DictionaryName": "CIM Assets",
-  "DictionaryVersion": "@TODO",
-  "LanguageIsoCode": "en",
+  "DictionaryName": "CIM Asset Catalogue",
+  "DictionaryVersion": "0.1",
+  "LanguageIsoCode": "EN",
   "LanguageOnly": "false",
-  "UseOwnUri": "@TODO",
-  "DictionaryUri": None,
+  "UseOwnUri": "true",
+  "DictionaryUri": "https://cim.ucaiug.io/ns",
   "License": None,
   "LicenseUrl": None,
   "ChangeRequestEmailAddress": None,
   "MoreInfoUrl": None,
   "QualityAssuranceProcedure": None,
   "QualityAssuranceProcedureUrl": None,
-  "ReleaseDate": None,
-  "Status": None,
+  "ReleaseDate": datetime.utcnow().strftime('%Y-%m-%d'),
+  "Status": "draft",
 }
 
 class CimToBsddTransformer(object):
@@ -47,6 +49,7 @@ class CimToBsddTransformer(object):
     self.gdb_password = params.gdb_pass
     self.gdb_repo = params.gdb_repo
     self.sparql_uri = "repositories/" + params.gdb_repo
+    self.bsdd_to_qdt = None
 
   @staticmethod
   def call_api(attempt, uri, req_method, req_headers = None, req_body = None, files=None, timeout=10):
@@ -100,6 +103,13 @@ class CimToBsddTransformer(object):
 
     return g
 
+  def get_bsdd_unit_from_qudt_url(self, url):
+    if self.bsdd_to_qdt is None:
+      self.bsdd_to_qdt = json.loads(self.call_api(5, URL_BSDD_QUDT_MAP, HTTPMethod.GET).text)
+    unit = next((unit for unit in self.bsdd_to_qdt if unit.get('qudtUri') is not None and unit['qudtUri'] == str(url)), str(url))
+
+    return unit
+
   def get_class_info(self):
     classes_dict = {'Classes' : []}
     g = self.get_query_results_graph(PATH_QUERY_CLASS_INFO)
@@ -121,7 +131,10 @@ class CimToBsddTransformer(object):
           prop = {'AllowedValues': []}
           for propp, propo in g.predicate_objects(o):
             if propp != URIRef(':AllowedValues'):
-              prop[str(propp).replace(':', '')] = str(propo)
+              if str(propp) == ':Unit':
+                prop[str(propp).replace(':', '')] = self.get_bsdd_unit_from_qudt_url(propo)
+              else:
+                prop[str(propp).replace(':', '')] = str(propo)
             else:
               alv = {}
               for alvp, alvo in g.predicate_objects(propo):
@@ -129,6 +142,8 @@ class CimToBsddTransformer(object):
               if len(alv.items()) > 0:
                 prop['AllowedValues'].append(alv)
           if prop not in class_dict[pk]:
+            if not len(prop['AllowedValues']) > 0:
+              prop.pop('AllowedValues')
             class_dict[pk].append(prop)
       classes_dict['Classes'].append(class_dict)
 
@@ -136,24 +151,30 @@ class CimToBsddTransformer(object):
 
   def get_property_info(self):
     props_dict = {'Properties' : []}
+    uk = 'Units'
+    avk = 'AllowedValues'
     g = self.get_query_results_graph(PATH_QUERY_PROP_INFO)
 
     for pr in g.subjects(URIRef(':Name')):
-      prop_dict = {'PropertyRelations' : [], 'Units' : [], 'AllowedValues' : []}
+      prop_dict = {uk : [], avk : []}
 
       for p, o in g.predicate_objects(pr):
         pk = str(p).replace(':', '')
-        if p not in [URIRef(':PropertyRelations'), URIRef(':Units'), URIRef(':AllowedValues')]:
-          prop_dict[pk] = str(o)
+        if p not in [URIRef(':' + uk), URIRef(':' + avk)]:
+            prop_dict[pk] = str(o)
         else:
           node = {}
           for nodep, nodeo in g.predicate_objects(o):
             node[str(nodep).replace(':', '')] = str(nodeo)
           if len(node.items()) > 0:
-            if p == URIRef(':Units'):
-              prop_dict[pk].append(node['Unit'])
+            if p == URIRef(':' + uk):
+              prop_dict[pk].append(self.get_bsdd_unit_from_qudt_url(nodeo))
             else:
               prop_dict[pk].append(node)
+      if not len(prop_dict[uk]) > 0:
+        prop_dict.pop(uk)
+      if not len(prop_dict[avk]) > 0:
+        prop_dict.pop(avk)
       props_dict['Properties'].append(prop_dict)
 
     return props_dict
@@ -167,9 +188,6 @@ class CimToBsddTransformer(object):
     bsdd_json = json.dumps(bsdd)
 
     return bsdd_json
-
-
-
 
 tr = CimToBsddTransformer(args)
 bsdd_dict = tr.create_bsdd_dict()
