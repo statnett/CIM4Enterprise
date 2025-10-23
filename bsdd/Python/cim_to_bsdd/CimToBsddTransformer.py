@@ -140,11 +140,19 @@ class CimToBsddTransformer(object):
               for alvp, alvo in g.predicate_objects(propo):
                 alv[str(alvp).replace(':', '')] = str(alvo)
               if len(alv.items()) > 0:
-                prop['AllowedValues'].append(alv)
-          if prop not in class_dict[pk]:
-            if not len(prop['AllowedValues']) > 0:
-              prop.pop('AllowedValues')
+                prop = next((prp for prp in class_dict['ClassProperties'] if prp.get('PropertyUri') == prop.get('PropertyUri')), prop)
+                prop_alvs = prop['AllowedValues']
+                if alv not in prop_alvs:
+                  prop['AllowedValues'].append(alv)
+          if not len(prop['AllowedValues']) > 0:
+            prop.pop('AllowedValues')
+          prp = next((prp for prp in class_dict[pk] if prp.get('PropertyUri') == prop.get('PropertyUri')), None)
+          if prp is None:
             class_dict[pk].append(prop)
+      if not len(class_dict['ClassProperties']) > 0:
+        class_dict.pop('ClassProperties')
+      if not len(class_dict['ClassRelations']) > 0:
+        class_dict.pop('ClassRelations')
       classes_dict['Classes'].append(class_dict)
 
     return classes_dict
