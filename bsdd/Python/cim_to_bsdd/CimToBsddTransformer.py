@@ -9,6 +9,12 @@ from time import sleep
 import requests
 from rdflib import Graph, URIRef, Literal
 
+K_CLASS = 'Classes'
+K_PROPS = 'Properties'
+K_PROPURI = 'PropertyUri'
+K_AVAL = 'AllowedValues'
+K_CPROP = 'ClassProperties'
+
 parser = argparse.ArgumentParser(description='A CLI app to create bSDD dictionary from CIM'
                                              'ontology in GraphDB repository.')
 
@@ -19,8 +25,8 @@ parser.add_argument('-r', '--gdb_repo', help='GraphDB repository', required=True
 args = parser.parse_args()
 
 HEADER_GDB_QUERY = {"Content-type": "application/sparql-query", 'Accept': '*/*'}
-PATH_QUERY_CLASS_INFO = '/bsdd/SPARQL/retrieve-class-info.rq'
-PATH_QUERY_PROP_INFO = '/bsdd/SPARQL/retrieve-properties-info.rq'
+PATH_QUERY_CLASS_INFO = '/../../SPARQL/retrieve-class-info.rq'
+PATH_QUERY_PROP_INFO = '/../../SPARQL/retrieve-properties-info.rq'
 URL_BSDD_QUDT_MAP = 'https://api.bsdd.buildingsmart.org/api/Unit/v1'
 BSDD_IMPORT =  {
   "ModelVersion": "2.0",
@@ -41,6 +47,7 @@ BSDD_IMPORT =  {
   "ReleaseDate": datetime.utcnow().strftime('%Y-%m-%d'),
   "Status": "draft",
 }
+PATH_CIM_BSDD_JSON = '/../../cim-bsdd.json'
 
 class CimToBsddTransformer(object):
   def __init__(self, params):
@@ -111,26 +118,20 @@ class CimToBsddTransformer(object):
     return unit
 
   def get_class_info(self):
-    classes_dict = {'Classes' : []}
+    classes_dict = {K_CLASS: []}
     g = self.get_query_results_graph(PATH_QUERY_CLASS_INFO)
 
     for cl in g.subjects(URIRef(':ClassType'), Literal('Class')):
-      class_dict = {'ClassProperties' : [], 'ClassRelations' : []}
+      class_dict = {K_CPROP: []}
 
       for p, o in g.predicate_objects(cl):
         pk = str(p).replace(':', '')
-        if p not in [URIRef(':ClassProperties'), URIRef(':ClassRelations')]:
+        if p not in [URIRef(':' + K_CPROP)]:
           class_dict[pk] = str(o)
-        elif p == URIRef(':ClassRelations'):
-          rel = {}
-          for relp, relo in g.predicate_objects(o):
-            rel[str(relp).replace(':', '')] = str(relo)
-          if rel not in class_dict[pk]:
-            class_dict[pk].append(rel)
         else:
-          prop = {'AllowedValues': []}
+          prop = {K_AVAL: []}
           for propp, propo in g.predicate_objects(o):
-            if propp != URIRef(':AllowedValues'):
+            if propp != URIRef(':' + K_AVAL):
               if str(propp) == ':Unit':
                 prop[str(propp).replace(':', '')] = self.get_bsdd_unit_from_qudt_url(propo)
               else:
@@ -140,35 +141,32 @@ class CimToBsddTransformer(object):
               for alvp, alvo in g.predicate_objects(propo):
                 alv[str(alvp).replace(':', '')] = str(alvo)
               if len(alv.items()) > 0:
-                prop = next((prp for prp in class_dict['ClassProperties'] if prp.get('PropertyUri') == prop.get('PropertyUri')), prop)
-                prop_alvs = prop['AllowedValues']
+                prop = next((prp for prp in class_dict[K_CPROP] if prp.get(K_PROPURI) == prop.get(K_PROPURI)), prop)
+                prop_alvs = prop[K_AVAL]
                 if alv not in prop_alvs:
-                  prop['AllowedValues'].append(alv)
-          if not len(prop['AllowedValues']) > 0:
-            prop.pop('AllowedValues')
-          prp = next((prp for prp in class_dict[pk] if prp.get('PropertyUri') == prop.get('PropertyUri')), None)
+                  prop[K_AVAL].append(alv)
+          if not len(prop[K_AVAL]) > 0:
+            prop.pop(K_AVAL)
+          prp = next((prp for prp in class_dict[pk] if prp.get(K_PROPURI) == prop.get(K_PROPURI)), None)
           if prp is None:
             class_dict[pk].append(prop)
-      if not len(class_dict['ClassProperties']) > 0:
-        class_dict.pop('ClassProperties')
-      if not len(class_dict['ClassRelations']) > 0:
-        class_dict.pop('ClassRelations')
-      classes_dict['Classes'].append(class_dict)
+      if not len(class_dict[K_CPROP]) > 0:
+        class_dict.pop(K_CPROP)
+      classes_dict[K_CLASS].append(class_dict)
 
     return classes_dict
 
   def get_property_info(self):
-    props_dict = {'Properties' : []}
+    props_dict = {K_PROPS: []}
     uk = 'Units'
-    avk = 'AllowedValues'
     g = self.get_query_results_graph(PATH_QUERY_PROP_INFO)
 
     for pr in g.subjects(URIRef(':Name')):
-      prop_dict = {uk : [], avk : []}
+      prop_dict = {uk : [], K_AVAL : []}
 
       for p, o in g.predicate_objects(pr):
         pk = str(p).replace(':', '')
-        if p not in [URIRef(':' + uk), URIRef(':' + avk)]:
+        if p not in [URIRef(':' + uk), URIRef(':' + K_AVAL)]:
             prop_dict[pk] = str(o)
         else:
           node = {}
@@ -181,23 +179,24 @@ class CimToBsddTransformer(object):
               prop_dict[pk].append(node)
       if not len(prop_dict[uk]) > 0:
         prop_dict.pop(uk)
-      if not len(prop_dict[avk]) > 0:
-        prop_dict.pop(avk)
-      props_dict['Properties'].append(prop_dict)
+      if not len(prop_dict[K_AVAL]) > 0:
+        prop_dict.pop(K_AVAL)
+      props_dict[K_PROPS].append(prop_dict)
 
     return props_dict
 
   def create_bsdd_dict(self):
+    path = os.getcwd() + PATH_CIM_BSDD_JSON
     bsdd= BSDD_IMPORT.copy()
     classes = self.get_class_info()
     properties = self.get_property_info()
-    bsdd["Classes"] = classes['Classes']
-    bsdd["Properties"] = properties['Properties']
-    bsdd_json = json.dumps(bsdd)
+    bsdd[K_CLASS] = classes[K_CLASS]
+    bsdd[K_PROPS] = properties[K_PROPS]
+    with open(path, 'w') as fout:
+      json.dump(bsdd, fout, indent=4)
 
-    return bsdd_json
+    return path
 
 tr = CimToBsddTransformer(args)
-bsdd_dict = tr.create_bsdd_dict()
 
-print(bsdd_dict)
+print('bSDD written to: ' + tr.create_bsdd_dict())

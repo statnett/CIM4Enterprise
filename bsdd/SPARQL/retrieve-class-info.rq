@@ -29,35 +29,23 @@ CONSTRUCT {
     _:pv :Value ?pvLabel .
     _:pv :Description ?pvDef .
     _:pv :OwnedUri ?pval .
-# To be enabled if needed:
-#    ?class :ClassRelations _:r .
-#    _:r :RelationType ?classRel .
-#    _:r :RelatedClassUri ?rel .
-#    _:r :RelatedClassName ?classRelLab .
-#    _:r :OwnedUri ?rel .
 } WHERE {
+    VALUES ?class {cim:AssetInfo cim:IdentifiedObject cim:CableInfo
+        cim:WireInfo cim:OverheadWireInfo cim:ShuntCompensatorInfo
+        cim:SwitchInfo cim:TapChangerInfo cim:TransformerEndInfo
+        cim:TransformerTankInfo cim:WireSpacingInfo cim:ProductAssetModel
+        cim:Manufacturer cim:Asset cim:AssetContainer cim:EndDevice
+        cim:Meter cim:Structure cim:AssetOrganisationRole
+        cim:AssetOwner cim:AssetModelUsageKind cim:OrganisationRole
+        cim:SinglePhaseKind cim:TransformerMeshImpedance cim:UnitMultiplier
+        cim:UnitSymbol cim:WireInsulationKind cim:WirePhaseInfo cim:WirePosition
+        cim:WireUsageKind cim:InUseStateKind cim:LifecycleDate cim:PowerSystemResource cim:UsagePoint}
     GRAPH onto:explicit {
-        {
-            values ?sclass {cim:AssetInfo}
-            ?sclass a owl:Class .
-            ?sclass rdfs:subClassOf* ?class .
-        } UNION {
-            values ?pclass {cim:AssetInfo cim:ProductAssetModel cim:Manufacturer cim:Asset cim:AssetOrganisationRole}
-            ?pclass a owl:Class .
-            ?class rdfs:subClassOf*  ?pclass .
-        }
         BIND(REPLACE(STR(?class), "https://cim.ucaiug.io/rules#|https://cim.ucaiug.io/ns#|https://cim.ucaiug.io/ns/eu#", "") as ?cCode) .
         OPTIONAL {?class rdfs:label ?cName} .
         OPTIONAL {?class rdfs:comment ?cDef} .
         OPTIONAL {?class rdfs:subClassOf ?parentClass
                   BIND(REPLACE(STR(?parentClass), "https://cim.ucaiug.io/rules#|https://cim.ucaiug.io/ns#|https://cim.ucaiug.io/ns/eu#", "") as ?parentClassCode) .}
-        OPTIONAL {
-            ?rel rdfs:subClassOf|^rdfs:subClassOf* ?class .
-            ?rel rdfs:label ?classRelLab
-            BIND(IF(EXISTS {?rel rdfs:subClassOf ?class}, "IsChildOf", "IsParentOf") as ?classRel) .
-            BIND(CONCAT(STR(?class), ?classRel, REPLACE(STR(?rel), "https://cim.ucaiug.io/rules#|https://cim.ucaiug.io/ns#|https://cim.ucaiug.io/ns/eu#", "")) as ?relUri)
-            FILTER(?class != ?rel)
-        }
         OPTIONAL {
             { ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
                   a owl:DatatypeProperty .
