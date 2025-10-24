@@ -10,7 +10,7 @@
 
 **To produce CIM bSDD**:
 
-run `python CimToBsddTransformer.py -gdb {graphDB URL} -u {username} -p {passowrd} -r {repository na,e}`
+run `python CimToBsddTransformer.py -gdb {graphDB URL} -u {username} -p {passowrd} -r {repository}`
 
 
 
