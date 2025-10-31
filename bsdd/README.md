@@ -1,3 +1,28 @@
+CIM to bSDD transformation was implemented as an answer to BIM-CIM immediate integration requirements, described in more detail in [BIM CIM Integration Requirements and Technical Design](https://github.com/statnett/Talk2PowerSystem/wiki/BIM-CIM-Integration-Requirements-and-Technical-Design#immediate-priorities).
+
+The information flow required for the transformation is illustrated on the following sequence diagram:
+
+![CIM-bSDD_squence.png](../CIM-bSDD_squence.png)
+
+1. The transformation tool is initiated with the following arguments:
+   - GraphDB URI
+   - username
+   - password
+   - GraphDB repository
+2. Class data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-class-info.rq`)
+3. Query is sent to the GraphDB repository via REST API
+4. HTTP GET Request to buildingSMART bSDD API to retrieve QUDT to bSDD units map is sent.
+5. Upon retrieval of class data and unit map data, both datasets are  is post-processed to the format required to prepare bSDD dictionary.
+6. Properties data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-properties-info.rq`)
+7. Upon retrieval of properties data and unit map data is, both datasets are post-processed to the format required to prepare bSDD dictionary.
+8. Post-processed and unit mapped class and properties datasets are merged with the dictionary metadata.
+9. The whole dictionary (metadata, class data, properties data) is saved to the filesystem (`cim-bsdd.json`).
+
+Requirements for the transformation script installation are described in [the tool readme](Python/cim_to_bsdd/README.md).
+
+
+
+Tasks description:
 
 - task: https://github.com/statnett/CIM4Enterprise/issues/8 . Convert to BSDD:
   - `Switch, SwitchInfo` and their parent classes (eg `IdentifiedObject, PowerSystemResource, Asset, AssetInfo`)
