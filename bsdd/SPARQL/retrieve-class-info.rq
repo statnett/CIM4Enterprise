@@ -1,0 +1,87 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX uml: <http://iec.ch/TC57/NonStandard/UML#>
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX onto: <http://www.ontotext.com/>
+PREFIX cim: <https://cim.ucaiug.io/ns#>
+PREFIX cimr: <https://cim.ucaiug.io/rules#>
+PREFIX eu: <https://cim.ucaiug.io/ns/eu#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <https://bsdd.buildingsmart.org/>
+
+CONSTRUCT {
+    ?class :Code ?cCode ;
+        :Name ?cName ;
+        :ClassType "Class" ;
+        :Definition ?cDef ;
+        :ParentClassCode ?parentClassCode ;
+        :CreatorLanguageIsoCode "EN" ;
+        :OwnedUri ?class ;
+        :Status "Active" ;
+        :ClassProperties
+            [
+                :Code ?pCode ;
+                :PropertyUri ?prop ;
+                :Description ?pDesc ;
+                :Unit ?pUnit ;
+                :OwnedUri ?propOuri ;
+                :PropertyType "Property" ;
+                :AllowedValues
+                    [
+                        :Code ?pvCode ;
+                        :Value ?pvLabel ;
+                        :Description ?pvDef ;
+                        :OwnedUri ?pval
+                    ]
+            ] .
+} WHERE {
+    VALUES ?class {
+        cim:AssetInfo cim:IdentifiedObject cim:CableInfo
+        cim:WireInfo cim:OverheadWireInfo cim:ShuntCompensatorInfo
+        cim:SwitchInfo cim:TapChangerInfo cim:TransformerEndInfo
+        cim:TransformerTankInfo cim:WireSpacingInfo cim:ProductAssetModel
+        cim:Manufacturer cim:Asset cim:AssetContainer cim:EndDevice
+        cim:Meter cim:Structure cim:AssetOrganisationRole
+        cim:AssetOwner cim:AssetModelUsageKind cim:OrganisationRole
+        cim:SinglePhaseKind cim:TransformerMeshImpedance cim:UnitMultiplier
+        cim:UnitSymbol cim:WireInsulationKind cim:WirePhaseInfo cim:WirePosition
+        cim:WireUsageKind cim:InUseStateKind cim:LifecycleDate cim:PowerSystemResource
+        cim:UsagePoint
+    }
+    GRAPH onto:explicit {
+        BIND (concat(str(cim:),"|",str(eu:),"|",str(cimr:)) AS ?prexixes)
+        BIND(REPLACE(STR(?class), ?prexixes, "") as ?cCode) .
+        OPTIONAL { ?class rdfs:label ?cName } .
+        OPTIONAL { ?class rdfs:comment ?cDef } .
+        OPTIONAL {
+            ?class rdfs:subClassOf ?parentClass
+            BIND(REPLACE(STR(?parentClass), ?prexixes, "") as ?parentClassCode) .
+        }
+        OPTIONAL {
+            {
+                ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
+                    a owl:DatatypeProperty .
+                BIND(CONCAT(STR(?prop), ?cCode) as ?propOuri)
+                BIND(REPLACE(?propOuri, ?prexixes, "") as ?pCode) .
+                OPTIONAL { ?prop rdfs:comment ?pDesc } .
+                OPTIONAL { ?prop qudt:hasUnit ?pUnit }
+            } UNION {
+                ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
+                    a owl:ObjectProperty ;
+                    rdfs:range ?range .
+                BIND(CONCAT(STR(?prop), ?cCode) as ?propOuri)
+                BIND(REPLACE(?propOuri, ?prexixes, "") as ?pCode) .
+                ?range cims:stereotype uml:enumeration .
+                OPTIONAL { ?prop rdfs:comment ?pDesc } .
+                OPTIONAL {
+                    ?pval rdf:type ?range ;
+                        rdfs:label ?pvLabel ;
+                        rdfs:comment ?pvDef .
+                    BIND(REPLACE(STR(?pval), ?prexixes, "") as ?pvCode) .
+                }
+            }
+        }
+    }
+}
+
