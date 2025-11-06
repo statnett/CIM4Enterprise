@@ -14,7 +14,7 @@
     "MoreInfoUrl": null,
     "QualityAssuranceProcedure": null,
     "QualityAssuranceProcedureUrl": null,
-    "ReleaseDate": "2025-10-24",
+    "ReleaseDate": "2025-11-06",
     "Status": "draft",
     "Classes": [
         {
@@ -59,13 +59,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameAssetInfo",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartAssetInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartAssetInfo",
                     "PropertyType": "Property"
                 }
             ],
@@ -120,13 +113,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameIdentifiedObject",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartIdentifiedObject",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartIdentifiedObject",
                     "PropertyType": "Property"
                 }
             ],
@@ -229,13 +215,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameCableInfo",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartCableInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartCableInfo",
                     "PropertyType": "Property"
                 },
                 {
@@ -445,13 +424,6 @@
                     "PropertyType": "Property"
                 },
                 {
-                    "Code": "mridSignificantPartWireInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartWireInfo",
-                    "PropertyType": "Property"
-                },
-                {
                     "AllowedValues": [
                         {
                             "Code": "WireInsulationKind.asbestosAndVarnishedCambric",
@@ -658,13 +630,6 @@
                     "PropertyType": "Property"
                 },
                 {
-                    "Code": "mridSignificantPartOverheadWireInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartOverheadWireInfo",
-                    "PropertyType": "Property"
-                },
-                {
                     "AllowedValues": [
                         {
                             "Code": "WireInsulationKind.asbestosAndVarnishedCambric",
@@ -834,13 +799,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameShuntCompensatorInfo",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartShuntCompensatorInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartShuntCompensatorInfo",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "ShuntCompensatorInfo",
@@ -915,13 +873,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameSwitchInfo",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartSwitchInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartSwitchInfo",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "SwitchInfo",
@@ -990,13 +941,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameTapChangerInfo",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartTapChangerInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartTapChangerInfo",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "TapChangerInfo",
@@ -1050,13 +994,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameTransformerEndInfo",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartTransformerEndInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartTransformerEndInfo",
                     "PropertyType": "Property"
                 }
             ],
@@ -1112,13 +1049,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameTransformerTankInfo",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartTransformerTankInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartTransformerTankInfo",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "TransformerTankInfo",
@@ -1172,13 +1102,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameWireSpacingInfo",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartWireSpacingInfo",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartWireSpacingInfo",
                     "PropertyType": "Property"
                 },
                 {
@@ -1280,13 +1203,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameProductAssetModel",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartProductAssetModel",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartProductAssetModel",
                     "PropertyType": "Property"
                 },
                 {
@@ -1406,13 +1322,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameManufacturer",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartManufacturer",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartManufacturer",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "Manufacturer",
@@ -1480,13 +1389,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameAsset",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartAsset",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartAsset",
                     "PropertyType": "Property"
                 },
                 {
@@ -1585,13 +1487,6 @@
                     "PropertyType": "Property"
                 },
                 {
-                    "Code": "mridSignificantPartAssetContainer",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartAssetContainer",
-                    "PropertyType": "Property"
-                },
-                {
                     "AllowedValues": [
                         {
                             "Code": "InUseStateKind.inUse",
@@ -1684,13 +1579,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameEndDevice",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartEndDevice",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartEndDevice",
                     "PropertyType": "Property"
                 },
                 {
@@ -1789,13 +1677,6 @@
                     "PropertyType": "Property"
                 },
                 {
-                    "Code": "mridSignificantPartMeter",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartMeter",
-                    "PropertyType": "Property"
-                },
-                {
                     "AllowedValues": [
                         {
                             "Code": "InUseStateKind.inUse",
@@ -1891,13 +1772,6 @@
                     "PropertyType": "Property"
                 },
                 {
-                    "Code": "mridSignificantPartStructure",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartStructure",
-                    "PropertyType": "Property"
-                },
-                {
                     "AllowedValues": [
                         {
                             "Code": "InUseStateKind.inUse",
@@ -1984,13 +1858,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameAssetOrganisationRole",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartAssetOrganisationRole",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartAssetOrganisationRole",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "AssetOrganisationRole",
@@ -2051,13 +1918,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameAssetOwner",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartAssetOwner",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartAssetOwner",
                     "PropertyType": "Property"
                 }
             ],
@@ -2134,13 +1994,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameOrganisationRole",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartOrganisationRole",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartOrganisationRole",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "OrganisationRole",
@@ -2208,13 +2061,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameTransformerMeshImpedance",
-                    "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartTransformerMeshImpedance",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartTransformerMeshImpedance",
                     "PropertyType": "Property"
                 }
             ],
@@ -2382,13 +2228,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameWirePosition",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartWirePosition",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartWirePosition",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "WirePosition",
@@ -2524,13 +2363,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNamePowerSystemResource",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartPowerSystemResource",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartPowerSystemResource",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "PowerSystemResource",
@@ -2585,13 +2417,6 @@
                     "Description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
                     "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasNameUsagePoint",
                     "PropertyType": "Property"
-                },
-                {
-                    "Code": "mridSignificantPartUsagePoint",
-                    "PropertyUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPartUsagePoint",
-                    "PropertyType": "Property"
                 }
             ],
             "Code": "UsagePoint",
@@ -2611,7 +2436,6 @@
             "Definition": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.description",
             "Status": "Active"
         },
@@ -2621,7 +2445,6 @@
             "Definition": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.mRID",
             "Status": "Active"
         },
@@ -2631,7 +2454,6 @@
             "Definition": "The name is any free human readable and possibly non unique text naming the object.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.name",
             "Status": "Active"
         },
@@ -2641,7 +2463,6 @@
             "Definition": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns/eu#IdentifiedObject.energyIdentCodeEic",
             "Status": "Active"
         },
@@ -2651,7 +2472,6 @@
             "Definition": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns/eu#IdentifiedObject.shortName",
             "Status": "Active"
         },
@@ -2661,18 +2481,7 @@
             "Definition": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\r\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#IdentifiedObject.aliasName",
-            "Status": "Active"
-        },
-        {
-            "Code": "mridSignificantPart",
-            "Name": "MRID significant part",
-            "Definition": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-            "DataType": "String",
-            "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
-            "OwnedUri": "https://cim.ucaiug.io/rules#mridSignificantPart",
             "Status": "Active"
         },
         {
@@ -2681,7 +2490,6 @@
             "Definition": "conduitSize.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#CableInfo.conduitSize",
             "Status": "Active"
         },
@@ -2691,7 +2499,6 @@
             "Definition": "isServiceConduit.",
             "DataType": "Boolean",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#CableInfo.isServiceConduit",
             "Status": "Active"
         },
@@ -2701,7 +2508,6 @@
             "Definition": "True if conductor is insulated.",
             "DataType": "Boolean",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.insulated",
             "Status": "Active"
         },
@@ -2711,7 +2517,6 @@
             "Definition": "AC resistance per unit length of the conductor at 25 \u00b0C.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.rAC25",
             "PhysicalQuantity": "ResistancePerLength",
             "Status": "Active"
@@ -2722,7 +2527,6 @@
             "Definition": "AC resistance per unit length of the conductor at 50 \u00b0C.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.rAC50",
             "PhysicalQuantity": "ResistancePerLength",
             "Status": "Active"
@@ -2733,7 +2537,6 @@
             "Definition": "AC resistance per unit length of the conductor at 75 \u00b0C.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.rAC75",
             "PhysicalQuantity": "ResistancePerLength",
             "Status": "Active"
@@ -2744,7 +2547,6 @@
             "Definition": "Describes the wire gauge or cross section (e.g., 4/0, #2, 336.5).",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.sizeDescription",
             "Status": "Active"
         },
@@ -3079,7 +2881,6 @@
             "Name": "insulationMaterial",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterial",
             "Status": "Active"
         },
@@ -3089,7 +2890,6 @@
             "Definition": "If true, the switch is not ganged (i.e., a switch phase may be operated separately from other phases).",
             "DataType": "Boolean",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#SwitchInfo.isUnganged",
             "Status": "Active"
         },
@@ -3108,7 +2908,6 @@
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
             "Dimension": "0 0 0 0 0 0 1 0",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#SwitchInfo.ratedInterruptingTime",
             "PhysicalQuantity": "Seconds",
             "Status": "Active"
@@ -3119,7 +2918,6 @@
             "Definition": "Built-in current transducer ratio.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#TapChangerInfo.ctRatio",
             "Status": "Active"
         },
@@ -3129,7 +2927,6 @@
             "Definition": "Built-in voltage transducer ratio.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#TapChangerInfo.ptRatio",
             "Status": "Active"
         },
@@ -3164,7 +2961,6 @@
             "Name": "usage",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WireSpacingInfo.usage",
             "Status": "Active"
         },
@@ -3174,7 +2970,6 @@
             "Definition": "Manufacturer's model number.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#ProductAssetModel.modelNumber",
             "Status": "Active"
         },
@@ -3184,7 +2979,6 @@
             "Definition": "Version number for product model, which indicates vintage of the product.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#ProductAssetModel.modelVersion",
             "Status": "Active"
         },
@@ -3243,7 +3037,6 @@
             "Name": "usageKind",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#ProductAssetModel.usageKind",
             "Status": "Active"
         },
@@ -3253,7 +3046,6 @@
             "Definition": "The Global Location Number (GLN) is part of the GS1 systems of standards. GLN is a 13-digit number structured that include GS1 Company Prefix, Location Reference (N1-N12) and Check Digit (N13).\r\nGS1 is a neutral, not-for-profit, international organisation that develops and maintains standards for supply and demand chains across multiple sectors.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim4.eu/ns/nc#OrganisationRole.globalLocationNumber",
             "Status": "Active"
         },
@@ -3263,7 +3055,6 @@
             "Definition": "Serial number of this asset.",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#Asset.serialNumber",
             "Status": "Active"
         },
@@ -3273,7 +3064,6 @@
             "Definition": "Utility-specific classification of Asset and its subtypes, according to their corporate standards, practices, and existing IT systems (e.g., for management of assets, maintenance, work, outage, customers, etc.).",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#Asset.type",
             "Status": "Active"
         },
@@ -3374,7 +3164,6 @@
             "Name": "inUseState",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#Asset.inUseState",
             "Status": "Active"
         },
@@ -3421,7 +3210,6 @@
             "Name": "phaseInfo",
             "DataType": "String",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WirePhaseInfo.phaseInfo",
             "Status": "Active"
         },
@@ -3431,7 +3219,6 @@
             "Definition": "Signed horizontal distance from the wire at this position to a common reference point.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WirePosition.xCoord",
             "PhysicalQuantity": "Displacement",
             "Status": "Active"
@@ -3442,7 +3229,6 @@
             "Definition": "Signed vertical distance from the wire at this position: above ground (positive value) or burial depth below ground (negative value).",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#WirePosition.yCoord",
             "PhysicalQuantity": "Displacement",
             "Status": "Active"
@@ -3453,7 +3239,6 @@
             "Definition": "Date current installation was completed, which may not be the same as the in-service date. Asset may have been installed at other locations previously. Ignored if asset is (1) not currently installed (e.g., stored in a depot) or (2) not intended to be installed (e.g., vehicle, tool).",
             "DataType": "Time",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#LifecycleDate.installationDate",
             "Status": "Active"
         },
@@ -3463,7 +3248,6 @@
             "Definition": "Date the asset was manufactured.",
             "DataType": "Time",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#LifecycleDate.manufacturedDate",
             "Status": "Active"
         },
@@ -3473,7 +3257,6 @@
             "Definition": "Date the asset was purchased. Note that even though an asset may have been purchased, it may not have been received into inventory at the time of purchase.",
             "DataType": "Time",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#LifecycleDate.purchaseDate",
             "Status": "Active"
         },
@@ -3483,7 +3266,6 @@
             "Definition": "Date the asset was received and first placed into inventory.",
             "DataType": "Time",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#LifecycleDate.receivedDate",
             "Status": "Active"
         },
@@ -3493,7 +3275,6 @@
             "Definition": "Date when the asset was last removed from service. Ignored if (1) not intended to be in service, or (2) currently in service.",
             "DataType": "Time",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#LifecycleDate.removalDate",
             "Status": "Active"
         },
@@ -3503,7 +3284,6 @@
             "Definition": "Date the asset is permanently retired from service and may be scheduled for disposal. Ignored if asset is (1) currently in service, or (2) permanently removed from service.",
             "DataType": "Time",
             "CreatorLanguageIsoCode": "EN",
-            "IsDynamic": "false",
             "OwnedUri": "https://cim.ucaiug.io/ns#LifecycleDate.retiredDate",
             "Status": "Active"
         }

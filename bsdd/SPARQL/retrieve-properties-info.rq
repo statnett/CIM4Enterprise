@@ -6,29 +6,32 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX onto: <http://www.ontotext.com/>
 PREFIX cim: <https://cim.ucaiug.io/ns#>
+PREFIX cimr: <https://cim.ucaiug.io/rules#>
+PREFIX eu: <https://cim.ucaiug.io/ns/eu#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX : <:>
+PREFIX : <https://bsdd.buildingsmart.org/>
 
 CONSTRUCT {
-    ?prop :Code ?pCode .
-    ?prop :Name ?pLab .
-    ?prop :Definition ?pDesc .
-    ?prop :DataType ?pDtype .
-    ?prop :Units _:u .
-    _:u :Unit ?unit .
-    ?prop :CreatorLanguageIsoCode "EN" .
-    ?prop :Dimension ?pUnitDv .
-    ?prop :IsDynamic "false"^^xsd:boolean .
-    ?prop :OwnedUri ?prop .
-    ?prop :PhysicalQuantity ?pQuant .
-    ?prop :Status "Active" .
-    ?prop :AllowedValues _:pv .
-    _:pv :Code ?pvCode .
-    _:pv :Value ?pvLabel .
-    _:pv :Description ?pvDef .
-    _:pv :OwnedUri ?propVal .
+    ?prop :Code ?pCode ;
+        :Name ?pLab ;
+        :Definition ?pDesc ;
+        :DataType ?pDtype ;
+        :Units [ :Unit ?unit ] ;
+        :CreatorLanguageIsoCode "EN" ;
+        :Dimension ?pUnitDv ;
+        :OwnedUri ?prop ;
+        :PhysicalQuantity ?pQuant ;
+        :Status "Active" ;
+        :AllowedValues
+            [
+                :Code ?pvCode ;
+                :Value ?pvLabel ;
+                :Description ?pvDef ;
+                :OwnedUri ?propVal
+            ] .
 } WHERE {
-    VALUES ?class {cim:AssetInfo cim:IdentifiedObject cim:CableInfo
+    VALUES ?class {
+        cim:AssetInfo cim:IdentifiedObject cim:CableInfo
         cim:WireInfo cim:OverheadWireInfo cim:ShuntCompensatorInfo
         cim:SwitchInfo cim:TapChangerInfo cim:TransformerEndInfo
         cim:TransformerTankInfo cim:WireSpacingInfo cim:ProductAssetModel
@@ -37,41 +40,56 @@ CONSTRUCT {
         cim:AssetOwner cim:AssetModelUsageKind cim:OrganisationRole
         cim:SinglePhaseKind cim:TransformerMeshImpedance cim:UnitMultiplier
         cim:UnitSymbol cim:WireInsulationKind cim:WirePhaseInfo cim:WirePosition
-        cim:WireUsageKind cim:InUseStateKind cim:LifecycleDate cim:PowerSystemResource cim:UsagePoint}
+        cim:WireUsageKind cim:InUseStateKind cim:LifecycleDate cim:PowerSystemResource
+        cim:UsagePoint
+    }
     GRAPH onto:explicit {
-        { ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
-              a owl:DatatypeProperty .
-          BIND(REPLACE(STR(?prop), "https://cim.ucaiug.io/rules#|https://cim.ucaiug.io/ns#|https://cim.ucaiug.io/ns/eu#", "") as ?pCode) .
-          OPTIONAL {?prop rdfs:label ?pLab} .
-          OPTIONAL {?prop rdfs:comment ?pDesc}  .
-          OPTIONAL {?prop qudt:hasUnit ?unit .
-                    ?unit qudt:hasDimensionVector ?unitDv }
-          BIND(SUBSTR(REPLACE(REPLACE(STR(?unitDv), "http://qudt.org/vocab/dimensionvector/", ""), "[A-Z]", " "), 2) as ?pUnitDv)
-          OPTIONAL {?prop rdfs:range ?range .
-                    BIND(IF(?range IN (xsd:float, xsd:double), "Real",
-                             IF(?range IN (xsd:integer), "Integer",
-                                 IF(?range IN (xsd:string), "String",
-                                     IF(?range IN (xsd:boolean), "Boolean",
-                                         IF(?range IN (xsd:time, xsd:dateTime, xsd:date, xsd:duration), "Time", "String")))))
-                        as ?pDtype) .
-          }
-          OPTIONAL {?prop qudt:hasQuantityKind/rdfs:label ?pQuant}
-        }
-        UNION
-        { ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
-              a owl:ObjectProperty ;
-              rdfs:range ?range .
-          ?range cims:stereotype uml:enumeration .
-          BIND(REPLACE(STR(?prop), "https://cim.ucaiug.io/rules#|https://cim.ucaiug.io/ns#|https://cim.ucaiug.io/ns/eu#", "") as ?pCode) .
-          OPTIONAL {?prop rdfs:label ?pLab} .
-          OPTIONAL {?pCode rdfs:comment ?pDesc}  .
-          OPTIONAL {
-              ?propVal rdf:type ?range ;
-                  rdfs:label ?pvLabel ;
-                  rdfs:comment ?pvDef .
-              BIND(REPLACE(STR(?propVal), "https://cim.ucaiug.io/rules#|https://cim.ucaiug.io/ns#|https://cim.ucaiug.io/ns/eu#", "") as ?pvCode) .
-          }
-          BIND("String" as ?pDtype) .
+        BIND (concat(str(cim:),"|",str(eu:),"|",str(cimr:)) AS ?prexixes)
+        {
+            ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
+                a owl:DatatypeProperty .
+            BIND(REPLACE(STR(?prop), ?prexixes, "") as ?pCode) .
+            OPTIONAL { ?prop rdfs:label ?pLab } .
+            OPTIONAL { ?prop rdfs:comment ?pDesc } .
+            OPTIONAL {
+                ?prop qudt:hasUnit ?unit .
+                ?unit qudt:hasDimensionVector ?unitDv
+            }
+            BIND(
+                SUBSTR(REPLACE(REPLACE(STR(
+                                           ?unitDv), "http://qudt.org/vocab/dimensionvector/", ""), "[A-Z]", " "), 2)
+                as ?pUnitDv
+            )
+            OPTIONAL {
+                ?prop rdfs:range ?range .
+                VALUES (?range ?pDtype) {
+                    (xsd:float "Real")
+                    (xsd:double "Real")
+                    (xsd:integer "Integer")
+                    (xsd:string "String")
+                    (xsd:boolean "Boolean")
+                    (xsd:time "Time")
+                    (xsd:dateTime "Time")
+                    (xsd:date "Time")
+                    (xsd:duration "Time")
+                }
+            }
+            OPTIONAL { ?prop qudt:hasQuantityKind/rdfs:label ?pQuant }
+        } UNION {
+            ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
+                a owl:ObjectProperty ;
+                rdfs:range ?range .
+            ?range cims:stereotype uml:enumeration .
+            BIND(REPLACE(STR(?prop), ?prexixes, "") as ?pCode) .
+            OPTIONAL { ?prop rdfs:label ?pLab } .
+            OPTIONAL { ?pCode rdfs:comment ?pDesc } .
+            OPTIONAL {
+                ?propVal rdf:type ?range ;
+                    rdfs:label ?pvLabel ;
+                    rdfs:comment ?pvDef .
+                BIND(REPLACE(STR(?propVal), ?prexixes, "") as ?pvCode) .
+            }
+            BIND("String" as ?pDtype) .
         }
     }
 }
