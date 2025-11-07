@@ -2,7 +2,7 @@ CIM to bSDD transformation was implemented as an answer to BIM-CIM immediate int
 
 The information flow required for the transformation is illustrated on the following sequence diagram:
 
-![CIM-bSDD_squence.png](../CIM-bSDD_squence.png)
+![CIM-bSDD_squence.png](../CIM-bSDD_sequence.png)
 
 1. The transformation tool is initiated with the following arguments:
    - GraphDB URI
