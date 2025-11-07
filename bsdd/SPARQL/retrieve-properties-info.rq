@@ -56,8 +56,8 @@ CONSTRUCT {
                 ?unit qudt:hasDimensionVector ?unitDv
             }
             BIND(
-                SUBSTR(REPLACE(REPLACE(STR(
-                                           ?unitDv), "http://qudt.org/vocab/dimensionvector/", ""), "[A-Z]", " "), 2)
+                REPLACE(REPLACE(STR(
+                                    ?unitDv), "http://qudt.org/vocab/dimensionvector/", ""), "A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)", "$3 $5 $7 $2 $6 $1 $4")
                 as ?pUnitDv
             )
             OPTIONAL {
