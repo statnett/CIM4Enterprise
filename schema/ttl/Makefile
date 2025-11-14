@@ -1,6 +1,6 @@
 RDF = $(wildcard ../rdf/*.rdf)
 TTL = $(patsubst ../rdf/%.rdf,%.ttl,$(RDF))
-FIXME = ../../../ENTSOE-SHACL/Inst4CIM-KG/rdfs-improved
+FIXME = ../../../Inst4CIM-KG/rdfs-improved
 
 all: $(TTL) asset-terms-in-telemark-120.md asset-terms-in-nordic-telemark.md
 
