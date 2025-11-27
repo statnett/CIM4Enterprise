@@ -10,11 +10,62 @@ The information flow required for the transformation is illustrated on the follo
    - password
    - GraphDB repository
 2. Class data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-class-info.rq`)
-3. Query is sent to the GraphDB repository via REST API
-4. HTTP GET Request to buildingSMART bSDD API to retrieve QUDT to bSDD units map is sent.
-5. Upon retrieval of class data and unit map data, both datasets are  is post-processed to the format required to prepare bSDD dictionary.
-6. Properties data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-properties-info.rq`)
-7. Upon retrieval of properties data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary. QUDT dimensiton vector URLs are mapped to the bSDD unit format, using the following regular expression: `A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)`
+   The query has form of SPARQL CONSTRUCT with the target graph pattern, returned by it matching [required keys form bSDD](https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20JSON%20import%20model.md#class):
+   - Code
+   - Name
+   - ClassType
+   - Definition
+   - ParentClassCode
+   - CreatorLanguageIsoCode
+   - OwnedUri
+   - Status
+   - ClassProperties (DatatypeProperty and enumeration ObjectProperties properties with class and its superclasses in the domain), each of which includes pattern to return:
+      - Code
+      - PropertyUri
+      - Description
+      - Unit
+      - OwnedUri
+      - PropertyType
+      - AllowedValues, each of which includes pattern to return:
+         - Code
+         - Value
+         - Description
+         - OwnedUri
+   The WHERE clause contains provided calass VALUES for the scope of the target graph: `cim:AssetInfo cim:IdentifiedObject cim:CableInfo
+cim:WireInfo cim:OverheadWireInfo cim:ShuntCompensatorInfo cim:SwitchInfo cim:TapChangerInfo cim:TransformerEndInfo cim:TransformerTankInfo cim:WireSpacingInfo cim:ProductAssetModel cim:Manufacturer cim:Asset cim:AssetContainer cim:EndDevice cim:Meter cim:Structure cim:AssetOrganisationRole cim:AssetOwner cim:AssetModelUsageKind cim:OrganisationRole cim:SinglePhaseKind cim:TransformerMeshImpedance cim:UnitMultiplier cim:UnitSymbol cim:WireInsulationKind cim:WirePhaseInfo cim:WirePosition cim:WireUsageKind cim:InUseStateKind cim:LifecycleDate cim:PowerSystemResource cim:UsagePoint` and the following mappings from CIM ontology to the bSDD variables above:
+
+
+         | RDF | bSDD |
+         | -------- | ------- |
+         | class IRI with the value of PREFIX removed | class Code |
+         | class rdfs:label | class Name |
+         | class rdfs:comment| class Definition |
+         | parent class IRI with the value of PREFIX removed | ParentClassCode |
+         | property IRI with the value of PREFIX removed | property Code |
+         | property IRI | PropertyUri |
+         | property rdfs:comment | property Description |
+         | property qudt:hasUnit | property Unit |
+         | unique combination of property and class IRIs | OwnedUri |
+         | IRI of enumeration property with the value of PREFIX removed | allowed value Code|
+         | rdfs:label of enumeration property | allowed value Value |
+         | rdfs:comment of enumeration property | allowed value Description |
+         | IRI of enumeration property | allowed value OwnedUri |
+
+        Other bSDD values in the target pattern are constant:
+
+         | Constant | bSDD |
+         | -------- | ------- |
+         | Class | ClassType |
+         | EN | CreatorLanguageIsoCode |
+         | Active | Status |
+         | Property | PropertyType |
+        
+   
+4. Query is sent to the GraphDB repository via REST API
+5. HTTP GET Request to buildingSMART bSDD API to retrieve QUDT to bSDD units map is sent.
+6. Upon retrieval of class data and unit map data, both datasets are  is post-processed to the format required to prepare bSDD dictionary.
+7. Properties data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-properties-info.rq`)
+8. Upon retrieval of properties data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary. QUDT dimensiton vector URLs are mapped to the bSDD unit format, using the following regular expression: `A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)`
 
 Using this vector as example:
 
