@@ -14,7 +14,7 @@ The information flow required for the transformation is illustrated on the follo
 4. HTTP GET Request to buildingSMART bSDD API to retrieve QUDT to bSDD units map is sent.
 5. Upon retrieval of class data and unit map data, both datasets are  is post-processed to the format required to prepare bSDD dictionary.
 6. Properties data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-properties-info.rq`)
-7. Upon retrieval of properties data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary. QUDT dimensiton vector URLs are mapped to the bSDD unit format, using the following regular expression: "A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)"
+7. Upon retrieval of properties data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary. QUDT dimensiton vector URLs are mapped to the bSDD unit format, using the following regular expression: `A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)`
 
 Using this vector as example:
 
