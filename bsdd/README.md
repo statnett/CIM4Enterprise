@@ -14,7 +14,7 @@ The information flow required for the transformation is illustrated on the follo
 4. HTTP GET Request to buildingSMART bSDD API to retrieve QUDT to bSDD units map is sent.
 5. Upon retrieval of class data and unit map data, both datasets are  is post-processed to the format required to prepare bSDD dictionary.
 6. Properties data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-properties-info.rq`)
-7. Upon retrieval of properties data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary. QUDT dimensiton vector URLs are mapped to the bSDD unit format, using the following regular expression: "A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)", "$3 $5 $7 $2 $6 $1 $4"
+7. Upon retrieval of properties data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary. QUDT dimensiton vector URLs are mapped to the bSDD unit format, using the following regular expression: "A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)"
 
 Using this vector as example:
 
@@ -47,7 +47,7 @@ Requirements for the transformation script installation are described in [the to
 
 
 
-Tasks description:
+Original Tasks description:
 
 - task: https://github.com/statnett/CIM4Enterprise/issues/8 . Convert to BSDD:
   - `Switch, SwitchInfo` and their parent classes (eg `IdentifiedObject, PowerSystemResource, Asset, AssetInfo`)
@@ -55,13 +55,3 @@ Tasks description:
   - All their enumerations
 - [bsdd-import-model.json](https://raw.githubusercontent.com/buildingSMART/bSDD/refs/heads/master/Model/Import%20Model/bsdd-import-model.json): template JSON for BSDD import
 - `bsdd-import-model.yaml`: same but in YAML: easier to edit and allows comments and commenting-out of lines
-
-TODO:
-- `cim-bsdd-import.yaml`: mapping of a few CIM clases (eg `cim:Switch, SwitchInfo, Asset`) and all their properties 
-- `cim-bsdd-import.json`: same but in JSON
-- JSONLD context with `"@vocab: bsdd"` and a few more term definitions to map all JSON terms (eg `Code <-> bsdd:Code`)
-- JSONLD frame to guide the nesting: `Class>ClassProperty, ClassProperty>AllowedValues, Property>AllowedValues`
-- `cim-bsdd-import.ttl`: converted example `cim-bsdd-import.json`
-- `cim-bsdd-export.ru`: SPARQL CONSTRUCT query to extract the selected elements.
-  It should emit exactly the same data for `Property` and `ClassProperty`: the latter is duplicative, and we don't need any variation of prop characteristics
-- `Makefile`: automate the whole process of running the query and making JSON
