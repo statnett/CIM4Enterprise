@@ -94,6 +94,150 @@ The mapping of a physical quantity, specify dimension according to International
 8. Post-processed and unit mapped class and properties datasets are merged with the dictionary metadata.
 9. The whole dictionary (metadata, class data, properties data) is saved to the filesystem (`cim-bsdd.json`).
 
+Sample transformation:
+
+bSDD
+```
+       {
+            "Code": "WireInfo",
+            "Name": "WireInfo",
+            "ClassType": "Class",
+            "Definition": "Wire data that can be specified per line segment phase, or for the line segment as a whole in case its phases all have the same wire characteristics.",
+            "ParentClassCode": "AssetInfo",
+            "CreatorLanguageIsoCode": "EN",
+            "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo",
+            "Status": "Active",
+            "ClassProperties": [
+                {
+                    "Code": "WireInfo.rAC75",
+                    "PropertyUri": "https://cim.ucaiug.io/ns#WireInfo.rAC75",
+                    "Description": "AC resistance per unit length of the conductor at 75 \u00b0C.",
+                    "Unit": "http://qudt.org/vocab/unit/OHM-PER-M",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.rAC75",
+                    "PropertyType": "Property"
+                },
+                {
+                    "Code": "WireInfo.insulationMaterialWireInfo",
+                    "PropertyUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterial",
+                    "Description": "(if insulated conductor) Material used for insulation.",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterialWireInfo",
+                    "PropertyType": "Property",
+                    "AllowedValues": [
+                        {
+                            "Code": "WireInsulationKind.asbestosAndVarnishedCambric",
+                            "Value": "asbestosAndVarnishedCambric",
+                            "Description": "Asbestos and varnished cambric wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.asbestosAndVarnishedCambric"
+                        },
+                        {
+                            "Code": "WireInsulationKind.beltedPilc",
+                            "Value": "beltedPilc",
+                            "Description": "Belted pilc wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.beltedPilc"
+                        },
+                        {
+                            "Code": "WireInsulationKind.butyl",
+                            "Value": "butyl",
+                            "Description": "Butyl wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.butyl"
+                        },
+                        {
+                            "Code": "WireInsulationKind.crosslinkedPolyethylene",
+                            "Value": "crosslinkedPolyethylene",
+                            "Description": "Crosslinked polyethylene wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.crosslinkedPolyethylene"
+                        },
+                        {
+                            "Code": "WireInsulationKind.ethylenePropyleneRubber",
+                            "Value": "ethylenePropyleneRubber",
+                            "Description": "Ethylene propylene rubber wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.ethylenePropyleneRubber"
+                        },
+                        {
+                            "Code": "WireInsulationKind.highMolecularWeightPolyethylene",
+                            "Value": "highMolecularWeightPolyethylene",
+                            "Description": "High nolecular weight polyethylene wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.highMolecularWeightPolyethylene"
+                        },
+                        {
+                            "Code": "WireInsulationKind.highPressureFluidFilled",
+                            "Value": "highPressureFluidFilled",
+                            "Description": "High pressure fluid filled wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.highPressureFluidFilled"
+                        },
+                        {
+                            "Code": "WireInsulationKind.lowCapacitanceRubber",
+                            "Value": "lowCapacitanceRubber",
+                            "Description": "Low capacitance rubber wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.lowCapacitanceRubber"
+                        },
+                        {
+                            "Code": "WireInsulationKind.oilPaper",
+                            "Value": "oilPaper",
+                            "Description": "Oil paper wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.oilPaper"
+                        },
+                        {
+                            "Code": "WireInsulationKind.other",
+                            "Value": "other",
+                            "Description": "Other kind of wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.other"
+                        },
+                        {
+                            "Code": "WireInsulationKind.ozoneResistantRubber",
+                            "Value": "ozoneResistantRubber",
+                            "Description": "Ozone resistant rubber wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.ozoneResistantRubber"
+                        },
+                        {
+                            "Code": "WireInsulationKind.rubber",
+                            "Value": "rubber",
+                            "Description": "Rubber wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.rubber"
+                        },
+                        {
+                            "Code": "WireInsulationKind.siliconRubber",
+                            "Value": "siliconRubber",
+                            "Description": "Silicon rubber wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.siliconRubber"
+                        },
+                        {
+                            "Code": "WireInsulationKind.treeResistantHighMolecularWeightPolyethylene",
+                            "Value": "treeResistantHighMolecularWeightPolyethylene",
+                            "Description": "Tree resistant high molecular weight polyethylene wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.treeResistantHighMolecularWeightPolyethylene"
+                        },
+                        {
+                            "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyethylene",
+                            "Value": "treeRetardantCrosslinkedPolyethylene",
+                            "Description": "Tree retardant crosslinked polyethylene wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.treeRetardantCrosslinkedPolyethylene"
+                        },
+                        {
+                            "Code": "WireInsulationKind.unbeltedPilc",
+                            "Value": "unbeltedPilc",
+                            "Description": "Unbelted pilc wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.unbeltedPilc"
+                        },
+                        {
+                            "Code": "WireInsulationKind.varnishedCambricCloth",
+                            "Value": "varnishedCambricCloth",
+                            "Description": "Varnished cambric cloth wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.varnishedCambricCloth"
+                        },
+                        {
+                            "Code": "WireInsulationKind.varnishedDacronGlass",
+                            "Value": "varnishedDacronGlass",
+                            "Description": "Varnished dacron glass wire insulation.",
+                            "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.varnishedDacronGlass"
+                        }
+                    ]
+                }
+            ]
+        }
+```
+
+
 Requirements for the transformation script installation are described in [the tool readme](Python/cim_to_bsdd/README.md).
 
 
