@@ -94,9 +94,9 @@ The mapping of a physical quantity, specify dimension according to International
 8. Post-processed and unit mapped class and properties datasets are merged with the dictionary metadata.
 9. The whole dictionary (metadata, class data, properties data) is saved to the filesystem (`cim-bsdd.json`).
 
-Sample transformation:
+Sample transformation (a class with numeric and enumeration properties):
 
-RDF
+RDF input
 
 ```
 cim:WireInfo a owl:Class ;
@@ -217,7 +217,7 @@ cim:WireInsulationKind.varnishedDacronGlass a cim:WireInsulationKind ;
 
 ```
 
-bSDD
+bSDD output
 ```
        {
             "Code": "WireInfo",
