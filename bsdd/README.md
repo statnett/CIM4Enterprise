@@ -96,6 +96,127 @@ The mapping of a physical quantity, specify dimension according to International
 
 Sample transformation:
 
+RDF
+
+```
+cim:WireInfo a owl:Class ;
+  rdfs:label "WireInfo" ;
+  rdfs:comment "Wire data that can be specified per line segment phase, or for the line segment as a whole in case its phases all have the same wire characteristics."@en ;
+  cims:belongsToCategory ac:Package_AssetCatalogueProfile ;
+  rdfs:subClassOf cim:AssetInfo .
+
+cim:WireInfo.rAC75 a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "rAC75" ;
+  rdfs:comment "AC resistance per unit length of the conductor at 75 °C."@en ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.ohmPerm ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:ResistancePerLength ;
+  qudt:hasUnit unit:OHM-PER-M ;
+  rdfs:domain cim:WireInfo ;
+  rdfs:range xsd:float .
+
+cim:WireInfo.insulationMaterial a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "insulationMaterial" ;
+  rdfs:comment "(if insulated conductor) Material used for insulation."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:WireInfo ;
+  rdfs:range cim:WireInsulationKind .
+
+cim:WireInsulationKind.asbestosAndVarnishedCambric a cim:WireInsulationKind ;
+  rdfs:label "asbestosAndVarnishedCambric" ;
+  rdfs:comment "Asbestos and varnished cambric wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.beltedPilc a cim:WireInsulationKind ;
+  rdfs:label "beltedPilc" ;
+  rdfs:comment "Belted pilc wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.butyl a cim:WireInsulationKind ;
+  rdfs:label "butyl" ;
+  rdfs:comment "Butyl wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.crosslinkedPolyethylene a cim:WireInsulationKind ;
+  rdfs:label "crosslinkedPolyethylene" ;
+  rdfs:comment "Crosslinked polyethylene wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.ethylenePropyleneRubber a cim:WireInsulationKind ;
+  rdfs:label "ethylenePropyleneRubber" ;
+  rdfs:comment "Ethylene propylene rubber wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.highMolecularWeightPolyethylene a cim:WireInsulationKind ;
+  rdfs:label "highMolecularWeightPolyethylene" ;
+  rdfs:comment "High nolecular weight polyethylene wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.highPressureFluidFilled a cim:WireInsulationKind ;
+  rdfs:label "highPressureFluidFilled" ;
+  rdfs:comment "High pressure fluid filled wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.lowCapacitanceRubber a cim:WireInsulationKind ;
+  rdfs:label "lowCapacitanceRubber" ;
+  rdfs:comment "Low capacitance rubber wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.oilPaper a cim:WireInsulationKind ;
+  rdfs:label "oilPaper" ;
+  rdfs:comment "Oil paper wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.other a cim:WireInsulationKind ;
+  rdfs:label "other" ;
+  rdfs:comment "Other kind of wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.ozoneResistantRubber a cim:WireInsulationKind ;
+  rdfs:label "ozoneResistantRubber" ;
+  rdfs:comment "Ozone resistant rubber wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.rubber a cim:WireInsulationKind ;
+  rdfs:label "rubber" ;
+  rdfs:comment "Rubber wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.siliconRubber a cim:WireInsulationKind ;
+  rdfs:label "siliconRubber" ;
+  rdfs:comment "Silicon rubber wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.treeResistantHighMolecularWeightPolyethylene a cim:WireInsulationKind ;
+  rdfs:label "treeResistantHighMolecularWeightPolyethylene" ;
+  rdfs:comment "Tree resistant high molecular weight polyethylene wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.treeRetardantCrosslinkedPolyethylene a cim:WireInsulationKind ;
+  rdfs:label "treeRetardantCrosslinkedPolyethylene" ;
+  rdfs:comment "Tree retardant crosslinked polyethylene wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.unbeltedPilc a cim:WireInsulationKind ;
+  rdfs:label "unbeltedPilc" ;
+  rdfs:comment "Unbelted pilc wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.varnishedCambricCloth a cim:WireInsulationKind ;
+  rdfs:label "varnishedCambricCloth" ;
+  rdfs:comment "Varnished cambric cloth wire insulation."@en ;
+  cims:stereotype "enum" .
+
+cim:WireInsulationKind.varnishedDacronGlass a cim:WireInsulationKind ;
+  rdfs:label "varnishedDacronGlass" ;
+  rdfs:comment "Varnished dacron glass wire insulation."@en ;
+  cims:stereotype "enum" .
+
+```
+
 bSDD
 ```
        {
