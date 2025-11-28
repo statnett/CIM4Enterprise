@@ -62,7 +62,7 @@ CONSTRUCT {
             {
                 ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
                     a owl:DatatypeProperty .
-                BIND(CONCAT(STR(?prop), ?cCode) as ?propOuri)
+                BIND(CONCAT(STR(?class), ".", STRAFTER(REPLACE(STR(?prop), ?prexixes, ""), ".")) as ?propOuri) .
                 BIND(REPLACE(?propOuri, ?prexixes, "") as ?pCode) .
                 OPTIONAL { ?prop rdfs:comment ?pDesc } .
                 OPTIONAL { ?prop qudt:hasUnit ?pUnit }
