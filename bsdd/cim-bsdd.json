@@ -373,10 +373,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.varnishedDacronGlass"
                         }
                     ],
-                    "Code": "WireInfo.insulationMaterialCableInfo",
+                    "Code": "CableInfo.insulationMaterial",
                     "PropertyUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterial",
                     "Description": "(if insulated conductor) Material used for insulation.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterialCableInfo",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#CableInfo.insulationMaterial",
                     "PropertyType": "Property"
                 }
             ],
@@ -610,10 +610,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.varnishedDacronGlass"
                         }
                     ],
-                    "Code": "WireInfo.insulationMaterialWireInfo",
+                    "Code": "WireInfo.insulationMaterial",
                     "PropertyUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterial",
                     "Description": "(if insulated conductor) Material used for insulation.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterialWireInfo",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterial",
                     "PropertyType": "Property"
                 }
             ],
@@ -847,10 +847,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#WireInsulationKind.varnishedDacronGlass"
                         }
                     ],
-                    "Code": "WireInfo.insulationMaterialOverheadWireInfo",
+                    "Code": "OverheadWireInfo.insulationMaterial",
                     "PropertyUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterial",
                     "Description": "(if insulated conductor) Material used for insulation.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#WireInfo.insulationMaterialOverheadWireInfo",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#OverheadWireInfo.insulationMaterial",
                     "PropertyType": "Property"
                 }
             ],
@@ -1350,10 +1350,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#WireUsageKind.transmission"
                         }
                     ],
-                    "Code": "WireSpacingInfo.usageWireSpacingInfo",
+                    "Code": "WireSpacingInfo.usage",
                     "PropertyUri": "https://cim.ucaiug.io/ns#WireSpacingInfo.usage",
                     "Description": "Usage of the associated wires.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#WireSpacingInfo.usageWireSpacingInfo",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#WireSpacingInfo.usage",
                     "PropertyType": "Property"
                 }
             ],
@@ -1482,10 +1482,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#AssetModelUsageKind.unknown"
                         }
                     ],
-                    "Code": "ProductAssetModel.usageKindProductAssetModel",
+                    "Code": "ProductAssetModel.usageKind",
                     "PropertyUri": "https://cim.ucaiug.io/ns#ProductAssetModel.usageKind",
                     "Description": "Intended usage for this asset model.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#ProductAssetModel.usageKindProductAssetModel",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#ProductAssetModel.usageKind",
                     "PropertyType": "Property"
                 }
             ],
@@ -1652,10 +1652,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#InUseStateKind.readyForUse"
                         }
                     ],
-                    "Code": "Asset.inUseStateAsset",
+                    "Code": "Asset.inUseState",
                     "PropertyUri": "https://cim.ucaiug.io/ns#Asset.inUseState",
                     "Description": "Indication of whether asset is currently deployed (in use), ready to be put into use or not available for use.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#Asset.inUseStateAsset",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#Asset.inUseState",
                     "PropertyType": "Property"
                 }
             ],
@@ -1754,10 +1754,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#InUseStateKind.readyForUse"
                         }
                     ],
-                    "Code": "Asset.inUseStateAssetContainer",
+                    "Code": "AssetContainer.inUseState",
                     "PropertyUri": "https://cim.ucaiug.io/ns#Asset.inUseState",
                     "Description": "Indication of whether asset is currently deployed (in use), ready to be put into use or not available for use.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#Asset.inUseStateAssetContainer",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#AssetContainer.inUseState",
                     "PropertyType": "Property"
                 }
             ],
@@ -1856,10 +1856,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#InUseStateKind.readyForUse"
                         }
                     ],
-                    "Code": "Asset.inUseStateEndDevice",
+                    "Code": "EndDevice.inUseState",
                     "PropertyUri": "https://cim.ucaiug.io/ns#Asset.inUseState",
                     "Description": "Indication of whether asset is currently deployed (in use), ready to be put into use or not available for use.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#Asset.inUseStateEndDevice",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#EndDevice.inUseState",
                     "PropertyType": "Property"
                 }
             ],
@@ -1958,10 +1958,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#InUseStateKind.readyForUse"
                         }
                     ],
-                    "Code": "Asset.inUseStateMeter",
+                    "Code": "Meter.inUseState",
                     "PropertyUri": "https://cim.ucaiug.io/ns#Asset.inUseState",
                     "Description": "Indication of whether asset is currently deployed (in use), ready to be put into use or not available for use.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#Asset.inUseStateMeter",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#Meter.inUseState",
                     "PropertyType": "Property"
                 }
             ],
@@ -2060,10 +2060,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#InUseStateKind.readyForUse"
                         }
                     ],
-                    "Code": "Asset.inUseStateStructure",
+                    "Code": "Structure.inUseState",
                     "PropertyUri": "https://cim.ucaiug.io/ns#Asset.inUseState",
                     "Description": "Indication of whether asset is currently deployed (in use), ready to be put into use or not available for use.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#Asset.inUseStateStructure",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#Structure.inUseState",
                     "PropertyType": "Property"
                 }
             ],
@@ -2459,10 +2459,10 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns#SinglePhaseKind.s2"
                         }
                     ],
-                    "Code": "WirePhaseInfo.phaseInfoWirePhaseInfo",
+                    "Code": "WirePhaseInfo.phaseInfo",
                     "PropertyUri": "https://cim.ucaiug.io/ns#WirePhaseInfo.phaseInfo",
                     "Description": "Phase information.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns#WirePhaseInfo.phaseInfoWirePhaseInfo",
+                    "OwnedUri": "https://cim.ucaiug.io/ns#WirePhaseInfo.phaseInfo",
                     "PropertyType": "Property"
                 }
             ],
