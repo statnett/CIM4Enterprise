@@ -61,11 +61,69 @@ cim:WireInfo cim:OverheadWireInfo cim:ShuntCompensatorInfo cim:SwitchInfo cim:Ta
          | Property | PropertyType |
         
    
-4. Query is sent to the GraphDB repository via REST API
-5. HTTP GET Request to buildingSMART bSDD API to retrieve QUDT to bSDD units map is sent.
-6. Upon retrieval of class data and unit map data, both datasets are  is post-processed to the format required to prepare bSDD dictionary.
-7. Properties data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-properties-info.rq`)
-8. Upon retrieval of properties data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary. QUDT dimensiton vector URLs are mapped to the bSDD unit format, using the following regular expression: `A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)`
+3. Query is sent to the GraphDB repository via REST API
+4. HTTP GET Request to buildingSMART bSDD API to retrieve QUDT to bSDD units map is sent.
+5. Upon retrieval of class data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary.
+6. Properties data retrieval query is loaded from the filesystem (`./SPARQL/retrieve-properties-info.rq`)
+   The query has form of SPARQL CONSTRUCT with the target graph pattern, returned by it matching [required keys form bSDD](https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20JSON%20import%20model.md#property):
+   - Code
+   - Name
+   - Definition
+   - DataType
+   - Units, each of which includes pattern to return:
+      - Unit
+   - CreatorLanguageIsoCode
+   - Dimension
+   - OwnedUri
+   - PhysicalQuantity
+   - Status
+   - AllowedValues, each of which includes pattern to return:
+      - Code
+      - Value
+      - Description
+      - OwnedUri
+   The WHERE clause contains the same provided calass VALUES for the scope of the target graph as the WHERE clause for class data retrieval query, and the following mappings from CIM ontology to the bSDD variables above:
+
+         | RDF | bSDD |
+         | -------- | ------- |
+         | property IRI with the value of PREFIX removed | property Code |
+         | property rdfs:label | property Name |
+         | property rdfs:comment| property Definition |
+         | property rdfs:range XSD datatype value mapped to bSDD value | property DataType |
+         | list of property qudt:hasUnit values mapped to bSDD (see point 4) | property Units[Unit] |
+         | property qudt:hasUnit/qudt:hasDimensionVector value mapped to bSDD (see point 7) | property Dimension |
+         | property IRI | property OwnedUri |
+         | property qudt:hasQuantityKind/rdfs:label| property PhysicalQuantity |
+         | IRI of enumeration property with the value of PREFIX removed | allowed value Code|
+         | rdfs:label of enumeration property | allowed value Value |
+         | rdfs:comment of enumeration property | allowed value Description |
+         | IRI of enumeration property | allowed value OwnedUri |
+        
+        Other bSDD values in the target pattern are constant:
+
+         | Constant | bSDD |
+         | -------- | ------- |
+         | EN | CreatorLanguageIsoCode |
+         | Active | Status |
+
+        XSD to bSDD mappings are as follows:
+
+         | Constant | bSDD |
+         | -------- | ------- |
+         | xsd:float | Real |
+         | xsd:double | Real |
+         | xsd:integer | Integer |
+         | xsd:string | String |
+         | xsd:boolean | Boolean |
+         | xsd:time | Time |
+         | xsd:dateTime | Time |
+         | xsd:date | Time |
+         | xsd:duration | Time |
+         | any other value | String |
+        
+
+
+7. Upon retrieval of properties data and unit map data, both datasets are post-processed to the format required to prepare bSDD dictionary. QUDT dimensiton vector URLs are mapped to the bSDD unit format, using the following regular expression: `A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)`
 
 Using this vector as example:
 
