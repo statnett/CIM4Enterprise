@@ -2856,8 +2856,6 @@
         },
         {
             "Units": [
-                "http://qudt.org/vocab/unit/OHM-PER-M",
-                "http://qudt.org/vocab/unit/OHM-PER-M",
                 "http://qudt.org/vocab/unit/OHM-PER-M"
             ],
             "Code": "WireInfo.rAC25",
@@ -2872,8 +2870,6 @@
         },
         {
             "Units": [
-                "http://qudt.org/vocab/unit/OHM-PER-M",
-                "http://qudt.org/vocab/unit/OHM-PER-M",
                 "http://qudt.org/vocab/unit/OHM-PER-M"
             ],
             "Code": "WireInfo.rAC50",
@@ -2888,8 +2884,6 @@
         },
         {
             "Units": [
-                "http://qudt.org/vocab/unit/OHM-PER-M",
-                "http://qudt.org/vocab/unit/OHM-PER-M",
                 "http://qudt.org/vocab/unit/OHM-PER-M"
             ],
             "Code": "WireInfo.rAC75",

@@ -191,7 +191,9 @@ class CimToBsddTransformer(object):
             node[str(nodep).replace(BSDD, '')] = str(nodeo)
           if len(node.items()) > 0:
             if p == URIRef(uk, base=BSDD):
-              prop_dict[pk].append(self.get_bsdd_unit_from_qudt_url(nodeo))
+              unit = self.get_bsdd_unit_from_qudt_url(nodeo)
+              if unit not in prop_dict[pk]:
+                prop_dict[pk].append(unit)
             else:
               prop_dict[pk].append(node)
       if not len(prop_dict[uk]) > 0:
