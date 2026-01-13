@@ -6,6 +6,7 @@ PREFIX onto: <http://www.ontotext.com/>
 PREFIX cim: <https://cim.ucaiug.io/ns#>
 PREFIX cimr: <https://cim.ucaiug.io/rules#>
 PREFIX eu: <https://cim.ucaiug.io/ns/eu#>
+PREFIX nc: <https://cim4.eu/ns/nc#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX : <https://bsdd.buildingsmart.org/>
@@ -26,13 +27,12 @@ CONSTRUCT {
                 :Description ?pDesc ;
                 :Unit ?pUnit ;
                 :OwnedUri ?propOuri ;
-                :PropertyType "Property" ;
                 :AllowedValues
                     [
                         :Code ?pvCode ;
-                        :Value ?pvLabel ;
+                        :Value ?pvVal ;
                         :Description ?pvDef ;
-                        :OwnedUri ?pval
+                        :OwnedUri ?pvalOuri
                     ]
             ] .
 } WHERE {
@@ -50,7 +50,7 @@ CONSTRUCT {
         cim:UsagePoint
     }
     GRAPH onto:explicit {
-        BIND (concat(str(cim:),"|",str(eu:),"|",str(cimr:)) AS ?prexixes)
+        BIND (concat(str(cim:),"|",str(eu:),"|",str(cimr:),"|",str(nc:)) AS ?prexixes)
         BIND(REPLACE(STR(?class), ?prexixes, "") as ?cCode) .
         OPTIONAL { ?class rdfs:label ?cName } .
         OPTIONAL { ?class rdfs:comment ?cDef } .
@@ -63,7 +63,7 @@ CONSTRUCT {
                 ?prop rdfs:domain/^rdfs:subClassOf* ?class ;
                     a owl:DatatypeProperty .
                 BIND(REPLACE(STR(?prop), ?prexixes, "") as ?propName)
-                BIND(CONCAT(STR(?class), ".",
+                BIND(CONCAT(STR(?class), ".cp.",
                                IF(CONTAINS(?propName, "."), STRAFTER(?propName, "."), ?propName))
                     as ?propOuri) .
                 BIND(REPLACE(?propOuri, ?prexixes, "") as ?pCode) .
@@ -74,7 +74,7 @@ CONSTRUCT {
                     a owl:ObjectProperty ;
                     rdfs:range ?range .
                 BIND(REPLACE(STR(?prop), ?prexixes, "") as ?propName)
-                BIND(CONCAT(STR(?class), ".",
+                BIND(CONCAT(STR(?class), ".cp.",
                                IF(CONTAINS(?propName, "."), STRAFTER(?propName, "."), ?propName))
                     as ?propOuri) .
                 BIND(REPLACE(?propOuri, ?prexixes, "") as ?pCode) .
@@ -84,7 +84,9 @@ CONSTRUCT {
                     ?pval rdf:type ?range ;
                         rdfs:label ?pvLabel ;
                         rdfs:comment ?pvDef .
-                    BIND(REPLACE(STR(?pval), ?prexixes, "") as ?pvCode) .
+                    BIND(SUBSTR(REPLACE(STR(?pval), ?prexixes, ""), 1, 50) as ?pvCode) .
+                    BIND(SUBSTR(?pvLabel, 1, 50) as ?pvVal) .
+                    BIND(CONCAT(?propOuri, "/", ?pvCode) AS ?pvalOuri) .
                 }
             }
         }

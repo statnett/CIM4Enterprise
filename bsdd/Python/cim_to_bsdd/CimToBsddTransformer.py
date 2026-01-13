@@ -47,7 +47,7 @@ BSDD_IMPORT = {
   "QualityAssuranceProcedure": None,
   "QualityAssuranceProcedureUrl": None,
   "ReleaseDate": datetime.utcnow().strftime('%Y-%m-%d'),
-  "Status": "draft",
+  "Status": "Preview",
 }
 PATH_CIM_BSDD_JSON = '/../../cim-bsdd.json'
 BSDD = "https://bsdd.buildingsmart.org/"
@@ -124,9 +124,9 @@ class CimToBsddTransformer(object):
     if self.bsdd_to_qdt is None:
       self.bsdd_to_qdt = json.loads(
         self.call_api(5, URL_BSDD_QUDT_MAP, HTTPMethod.GET).text)
-    unit = next((unit for unit in self.bsdd_to_qdt if
+    unit = next((unit['code'] for unit in self.bsdd_to_qdt if
                  unit.get('qudtUri') is not None and unit['qudtUri'] == str(
-                   url)), str(url))
+                   url)), "")
 
     return unit
 
@@ -163,10 +163,11 @@ class CimToBsddTransformer(object):
                   prop[K_AVAL].append(alv)
           if not len(prop[K_AVAL]) > 0:
             prop.pop(K_AVAL)
-          prp = next((prp for prp in class_dict[pk] if
-                      prp.get(K_PROPURI) == prop.get(K_PROPURI)), None)
-          if prp is None:
-            class_dict[pk].append(prop)
+          if len(prop.items()) > 0:
+            prp = next((prp for prp in class_dict[pk] if
+                        prp.get(K_PROPURI) == prop.get(K_PROPURI)), None)
+            if prp is None:
+              class_dict[pk].append(prop)
       if not len(class_dict[K_CPROP]) > 0:
         class_dict.pop(K_CPROP)
       classes_dict[K_CLASS].append(class_dict)
@@ -192,10 +193,12 @@ class CimToBsddTransformer(object):
           if len(node.items()) > 0:
             if p == URIRef(uk, base=BSDD):
               unit = self.get_bsdd_unit_from_qudt_url(nodeo)
-              if unit not in prop_dict[pk]:
+              if unit != '' and unit not in prop_dict[pk]:
                 prop_dict[pk].append(unit)
             else:
-              prop_dict[pk].append(node)
+              prop_alvs = prop_dict[K_AVAL]
+              if node not in prop_alvs:
+                prop_dict[pk].append(node)
       if not len(prop_dict[uk]) > 0:
         prop_dict.pop(uk)
       if not len(prop_dict[K_AVAL]) > 0:
@@ -211,8 +214,11 @@ class CimToBsddTransformer(object):
     properties = self.get_property_info()
     bsdd[K_CLASS] = classes[K_CLASS]
     bsdd[K_PROPS] = properties[K_PROPS]
+    bsdd_js = json.dumps(bsdd, indent=4)
     with open(path, 'w') as fout:
-      json.dump(bsdd, fout, indent=4)
+      fout.write(bsdd_js.replace("#", "/")
+                 .replace('https://cim.ucaiug.io/rules/', 'https://cim.ucaiug.io/ns/')
+                 .replace('https://cim4.eu/', 'https://cim.ucaiug.io/'))
 
     return path
 
