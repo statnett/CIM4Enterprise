@@ -32,7 +32,7 @@ PATH_QUERY_PROP_INFO = '/../../SPARQL/retrieve-properties-info.rq'
 URL_BSDD_QUDT_MAP = 'https://api.bsdd.buildingsmart.org/api/Unit/v1'
 BSDD_IMPORT = {
   "ModelVersion": "2.0",
-  "OrganizationCode": "ucaiug",
+  "OrganizationCode": "UCAIug",
   "DictionaryCode": "cim",
   "DictionaryName": "CIM Asset Catalogue",
   "DictionaryVersion": "0.1",
@@ -40,10 +40,10 @@ BSDD_IMPORT = {
   "LanguageOnly": "false",
   "UseOwnUri": "true",
   "DictionaryUri": "https://cim.ucaiug.io/ns",
-  "License": None,
-  "LicenseUrl": None,
+  "License": "Apache License, Version 2.0 | Apache Software Foundation",
+  "LicenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
   "ChangeRequestEmailAddress": None,
-  "MoreInfoUrl": None,
+  "MoreInfoUrl": "https://ucaiug.org/",
   "QualityAssuranceProcedure": None,
   "QualityAssuranceProcedureUrl": None,
   "ReleaseDate": datetime.utcnow().strftime('%Y-%m-%d'),

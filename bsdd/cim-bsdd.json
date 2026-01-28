@@ -1,6 +1,6 @@
 {
     "ModelVersion": "2.0",
-    "OrganizationCode": "demo2026",
+    "OrganizationCode": "UCAIug",
     "DictionaryCode": "cim",
     "DictionaryName": "CIM Asset Catalogue",
     "DictionaryVersion": "0.1",
@@ -8,13 +8,13 @@
     "LanguageOnly": "false",
     "UseOwnUri": "true",
     "DictionaryUri": "https://cim.ucaiug.io/ns",
-    "License": null,
-    "LicenseUrl": null,
+    "License": "Apache License, Version 2.0 | Apache Software Foundation",
+    "LicenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
     "ChangeRequestEmailAddress": null,
-    "MoreInfoUrl": null,
+    "MoreInfoUrl": "https://ucaiug.org/",
     "QualityAssuranceProcedure": null,
     "QualityAssuranceProcedureUrl": null,
-    "ReleaseDate": "2026-01-13",
+    "ReleaseDate": "2026-01-27",
     "Status": "Preview",
     "Classes": [
         {
@@ -36,12 +36,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/AssetInfo.cp.name"
-                },
-                {
-                    "Code": "AssetInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/AssetInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "AssetInfo.cp.energyIdentCodeEic",
@@ -92,12 +86,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/IdentifiedObject.cp.name"
                 },
                 {
-                    "Code": "IdentifiedObject.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/IdentifiedObject.cp.mridSignificantPart"
-                },
-                {
                     "Code": "IdentifiedObject.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -142,6 +130,7 @@
                     "Code": "CableInfo.cp.gmr",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.gmr",
                     "Description": "Geometric mean radius. If we replace the conductor by a thin walled tube of radius GMR, then its reactance is identical to the reactance of the actual conductor.",
+                    "Unit": "m",
                     "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.gmr"
                 },
                 {
@@ -175,12 +164,14 @@
                     "Code": "CableInfo.cp.radius",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.radius",
                     "Description": "Outside radius of the wire.",
+                    "Unit": "m",
                     "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.radius"
                 },
                 {
                     "Code": "CableInfo.cp.ratedCurrent",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.ratedCurrent",
                     "Description": "Current carrying capacity of the wire under stated thermal conditions.",
+                    "Unit": "A",
                     "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.ratedCurrent"
                 },
                 {
@@ -206,12 +197,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.name"
-                },
-                {
-                    "Code": "CableInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "CableInfo.cp.energyIdentCodeEic",
@@ -312,16 +297,16 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.insulationMaterial/WireInsulationKind.siliconRubber"
                         },
                         {
-                            "Code": "WireInsulationKind.treeResistantHighMolecularWeigh",
+                            "Code": "WireInsulationKind.treeResistantHighMolecularWeightPolyethylene",
                             "Value": "treeResistantHighMolecularWeightPolyethylene",
                             "Description": "Tree resistant high molecular weight polyethylene wire insulation.",
-                            "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.insulationMaterial/WireInsulationKind.treeResistantHighMolecularWeigh"
+                            "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.insulationMaterial/WireInsulationKind.treeResistantHighMolecularWeightPolyethylene"
                         },
                         {
-                            "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyeth",
+                            "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyethylene",
                             "Value": "treeRetardantCrosslinkedPolyethylene",
                             "Description": "Tree retardant crosslinked polyethylene wire insulation.",
-                            "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.insulationMaterial/WireInsulationKind.treeRetardantCrosslinkedPolyeth"
+                            "OwnedUri": "https://cim.ucaiug.io/ns/CableInfo.cp.insulationMaterial/WireInsulationKind.treeRetardantCrosslinkedPolyethylene"
                         },
                         {
                             "Code": "WireInsulationKind.unbeltedPilc",
@@ -363,6 +348,7 @@
                     "Code": "WireInfo.cp.gmr",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.gmr",
                     "Description": "Geometric mean radius. If we replace the conductor by a thin walled tube of radius GMR, then its reactance is identical to the reactance of the actual conductor.",
+                    "Unit": "m",
                     "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.gmr"
                 },
                 {
@@ -396,12 +382,14 @@
                     "Code": "WireInfo.cp.radius",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.radius",
                     "Description": "Outside radius of the wire.",
+                    "Unit": "m",
                     "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.radius"
                 },
                 {
                     "Code": "WireInfo.cp.ratedCurrent",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.ratedCurrent",
                     "Description": "Current carrying capacity of the wire under stated thermal conditions.",
+                    "Unit": "A",
                     "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.ratedCurrent"
                 },
                 {
@@ -427,12 +415,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.name"
-                },
-                {
-                    "Code": "WireInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "WireInfo.cp.energyIdentCodeEic",
@@ -533,16 +515,16 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.insulationMaterial/WireInsulationKind.siliconRubber"
                         },
                         {
-                            "Code": "WireInsulationKind.treeResistantHighMolecularWeigh",
+                            "Code": "WireInsulationKind.treeResistantHighMolecularWeightPolyethylene",
                             "Value": "treeResistantHighMolecularWeightPolyethylene",
                             "Description": "Tree resistant high molecular weight polyethylene wire insulation.",
-                            "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.insulationMaterial/WireInsulationKind.treeResistantHighMolecularWeigh"
+                            "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.insulationMaterial/WireInsulationKind.treeResistantHighMolecularWeightPolyethylene"
                         },
                         {
-                            "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyeth",
+                            "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyethylene",
                             "Value": "treeRetardantCrosslinkedPolyethylene",
                             "Description": "Tree retardant crosslinked polyethylene wire insulation.",
-                            "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.insulationMaterial/WireInsulationKind.treeRetardantCrosslinkedPolyeth"
+                            "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.cp.insulationMaterial/WireInsulationKind.treeRetardantCrosslinkedPolyethylene"
                         },
                         {
                             "Code": "WireInsulationKind.unbeltedPilc",
@@ -584,6 +566,7 @@
                     "Code": "OverheadWireInfo.cp.gmr",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.gmr",
                     "Description": "Geometric mean radius. If we replace the conductor by a thin walled tube of radius GMR, then its reactance is identical to the reactance of the actual conductor.",
+                    "Unit": "m",
                     "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.gmr"
                 },
                 {
@@ -617,12 +600,14 @@
                     "Code": "OverheadWireInfo.cp.radius",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.radius",
                     "Description": "Outside radius of the wire.",
+                    "Unit": "m",
                     "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.radius"
                 },
                 {
                     "Code": "OverheadWireInfo.cp.ratedCurrent",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WireInfo.ratedCurrent",
                     "Description": "Current carrying capacity of the wire under stated thermal conditions.",
+                    "Unit": "A",
                     "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.ratedCurrent"
                 },
                 {
@@ -648,12 +633,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.name"
-                },
-                {
-                    "Code": "OverheadWireInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "OverheadWireInfo.cp.energyIdentCodeEic",
@@ -754,16 +733,16 @@
                             "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.insulationMaterial/WireInsulationKind.siliconRubber"
                         },
                         {
-                            "Code": "WireInsulationKind.treeResistantHighMolecularWeigh",
+                            "Code": "WireInsulationKind.treeResistantHighMolecularWeightPolyethylene",
                             "Value": "treeResistantHighMolecularWeightPolyethylene",
                             "Description": "Tree resistant high molecular weight polyethylene wire insulation.",
-                            "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.insulationMaterial/WireInsulationKind.treeResistantHighMolecularWeigh"
+                            "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.insulationMaterial/WireInsulationKind.treeResistantHighMolecularWeightPolyethylene"
                         },
                         {
-                            "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyeth",
+                            "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyethylene",
                             "Value": "treeRetardantCrosslinkedPolyethylene",
                             "Description": "Tree retardant crosslinked polyethylene wire insulation.",
-                            "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.insulationMaterial/WireInsulationKind.treeRetardantCrosslinkedPolyeth"
+                            "OwnedUri": "https://cim.ucaiug.io/ns/OverheadWireInfo.cp.insulationMaterial/WireInsulationKind.treeRetardantCrosslinkedPolyethylene"
                         },
                         {
                             "Code": "WireInsulationKind.unbeltedPilc",
@@ -805,12 +784,14 @@
                     "Code": "ShuntCompensatorInfo.cp.ratedReactivePower",
                     "PropertyUri": "https://cim.ucaiug.io/ns/ShuntCompensatorInfo.ratedReactivePower",
                     "Description": "Rated reactive power.",
+                    "Unit": "VAR",
                     "OwnedUri": "https://cim.ucaiug.io/ns/ShuntCompensatorInfo.cp.ratedReactivePower"
                 },
                 {
                     "Code": "ShuntCompensatorInfo.cp.ratedVoltage",
                     "PropertyUri": "https://cim.ucaiug.io/ns/ShuntCompensatorInfo.ratedVoltage",
                     "Description": "Rated voltage.",
+                    "Unit": "Volt",
                     "OwnedUri": "https://cim.ucaiug.io/ns/ShuntCompensatorInfo.cp.ratedVoltage"
                 },
                 {
@@ -830,12 +811,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/ShuntCompensatorInfo.cp.name"
-                },
-                {
-                    "Code": "ShuntCompensatorInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/ShuntCompensatorInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "ShuntCompensatorInfo.cp.energyIdentCodeEic",
@@ -871,6 +846,7 @@
                     "Code": "SwitchInfo.cp.breakingCapacity",
                     "PropertyUri": "https://cim.ucaiug.io/ns/SwitchInfo.breakingCapacity",
                     "Description": "The maximum fault current a breaking device can break safely under prescribed conditions of use.",
+                    "Unit": "A",
                     "OwnedUri": "https://cim.ucaiug.io/ns/SwitchInfo.cp.breakingCapacity"
                 },
                 {
@@ -883,6 +859,7 @@
                     "Code": "SwitchInfo.cp.ratedCurrent",
                     "PropertyUri": "https://cim.ucaiug.io/ns/SwitchInfo.ratedCurrent",
                     "Description": "Rated current.",
+                    "Unit": "A",
                     "OwnedUri": "https://cim.ucaiug.io/ns/SwitchInfo.cp.ratedCurrent"
                 },
                 {
@@ -896,6 +873,7 @@
                     "Code": "SwitchInfo.cp.ratedVoltage",
                     "PropertyUri": "https://cim.ucaiug.io/ns/SwitchInfo.ratedVoltage",
                     "Description": "Rated voltage.",
+                    "Unit": "Volt",
                     "OwnedUri": "https://cim.ucaiug.io/ns/SwitchInfo.cp.ratedVoltage"
                 },
                 {
@@ -915,12 +893,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/SwitchInfo.cp.name"
-                },
-                {
-                    "Code": "SwitchInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/SwitchInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "SwitchInfo.cp.energyIdentCodeEic",
@@ -956,6 +928,7 @@
                     "Code": "TapChangerInfo.cp.ctRating",
                     "PropertyUri": "https://cim.ucaiug.io/ns/TapChangerInfo.ctRating",
                     "Description": "Built-in current transformer primary rating.",
+                    "Unit": "A",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TapChangerInfo.cp.ctRating"
                 },
                 {
@@ -987,12 +960,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TapChangerInfo.cp.name"
-                },
-                {
-                    "Code": "TapChangerInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/TapChangerInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "TapChangerInfo.cp.energyIdentCodeEic",
@@ -1028,24 +995,28 @@
                     "Code": "TransformerEndInfo.cp.emergencyS",
                     "PropertyUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.emergencyS",
                     "Description": "Apparent power that the winding can carry under emergency conditions (also called long-term emergency power).",
+                    "Unit": "VA",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.cp.emergencyS"
                 },
                 {
                     "Code": "TransformerEndInfo.cp.insulationU",
                     "PropertyUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.insulationU",
                     "Description": "Basic insulation level voltage rating.",
+                    "Unit": "Volt",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.cp.insulationU"
                 },
                 {
                     "Code": "TransformerEndInfo.cp.ratedS",
                     "PropertyUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.ratedS",
                     "Description": "Normal apparent power rating.",
+                    "Unit": "VA",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.cp.ratedS"
                 },
                 {
                     "Code": "TransformerEndInfo.cp.ratedU",
                     "PropertyUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.ratedU",
                     "Description": "Rated voltage: phase-phase for three-phase windings, and either phase-phase or phase-neutral for single-phase windings.",
+                    "Unit": "Volt",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.cp.ratedU"
                 },
                 {
@@ -1065,12 +1036,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.cp.name"
-                },
-                {
-                    "Code": "TransformerEndInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "TransformerEndInfo.cp.energyIdentCodeEic",
@@ -1121,12 +1086,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/TransformerTankInfo.cp.name"
                 },
                 {
-                    "Code": "TransformerTankInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/TransformerTankInfo.cp.mridSignificantPart"
-                },
-                {
                     "Code": "TransformerTankInfo.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -1173,12 +1132,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/WireSpacingInfo.cp.name"
-                },
-                {
-                    "Code": "WireSpacingInfo.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/WireSpacingInfo.cp.mridSignificantPart"
                 },
                 {
                     "Code": "WireSpacingInfo.cp.energyIdentCodeEic",
@@ -1271,12 +1224,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/ProductAssetModel.cp.name"
-                },
-                {
-                    "Code": "ProductAssetModel.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/ProductAssetModel.cp.mridSignificantPart"
                 },
                 {
                     "Code": "ProductAssetModel.cp.energyIdentCodeEic",
@@ -1389,12 +1336,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/Manufacturer.cp.name"
                 },
                 {
-                    "Code": "Manufacturer.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/Manufacturer.cp.mridSignificantPart"
-                },
-                {
                     "Code": "Manufacturer.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -1453,12 +1394,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/Asset.cp.name"
-                },
-                {
-                    "Code": "Asset.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/Asset.cp.mridSignificantPart"
                 },
                 {
                     "Code": "Asset.cp.energyIdentCodeEic",
@@ -1547,12 +1482,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/AssetContainer.cp.name"
                 },
                 {
-                    "Code": "AssetContainer.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/AssetContainer.cp.mridSignificantPart"
-                },
-                {
                     "Code": "AssetContainer.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -1637,12 +1566,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/EndDevice.cp.name"
-                },
-                {
-                    "Code": "EndDevice.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/EndDevice.cp.mridSignificantPart"
                 },
                 {
                     "Code": "EndDevice.cp.energyIdentCodeEic",
@@ -1731,12 +1654,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/Meter.cp.name"
                 },
                 {
-                    "Code": "Meter.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/Meter.cp.mridSignificantPart"
-                },
-                {
                     "Code": "Meter.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -1823,12 +1740,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/Structure.cp.name"
                 },
                 {
-                    "Code": "Structure.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/Structure.cp.mridSignificantPart"
-                },
-                {
                     "Code": "Structure.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -1909,12 +1820,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/AssetOrganisationRole.cp.name"
                 },
                 {
-                    "Code": "AssetOrganisationRole.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/AssetOrganisationRole.cp.mridSignificantPart"
-                },
-                {
                     "Code": "AssetOrganisationRole.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -1967,12 +1872,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/AssetOwner.cp.name"
-                },
-                {
-                    "Code": "AssetOwner.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/AssetOwner.cp.mridSignificantPart"
                 },
                 {
                     "Code": "AssetOwner.cp.energyIdentCodeEic",
@@ -2038,12 +1937,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/OrganisationRole.cp.name"
                 },
                 {
-                    "Code": "OrganisationRole.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/OrganisationRole.cp.mridSignificantPart"
-                },
-                {
                     "Code": "OrganisationRole.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -2086,6 +1979,7 @@
                     "Code": "TransformerMeshImpedance.cp.x",
                     "PropertyUri": "https://cim.ucaiug.io/ns/TransformerMeshImpedance.x",
                     "Description": "Reactance between the 'from' and the 'to' end, seen from the 'from' end.",
+                    "Unit": "Ohm",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TransformerMeshImpedance.cp.x"
                 },
                 {
@@ -2105,12 +1999,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/TransformerMeshImpedance.cp.name"
-                },
-                {
-                    "Code": "TransformerMeshImpedance.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/TransformerMeshImpedance.cp.mridSignificantPart"
                 },
                 {
                     "Code": "TransformerMeshImpedance.cp.energyIdentCodeEic",
@@ -2228,12 +2116,14 @@
                     "Code": "WirePosition.cp.xCoord",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WirePosition.xCoord",
                     "Description": "Signed horizontal distance from the wire at this position to a common reference point.",
+                    "Unit": "m",
                     "OwnedUri": "https://cim.ucaiug.io/ns/WirePosition.cp.xCoord"
                 },
                 {
                     "Code": "WirePosition.cp.yCoord",
                     "PropertyUri": "https://cim.ucaiug.io/ns/WirePosition.yCoord",
                     "Description": "Signed vertical distance from the wire at this position: above ground (positive value) or burial depth below ground (negative value).",
+                    "Unit": "m",
                     "OwnedUri": "https://cim.ucaiug.io/ns/WirePosition.cp.yCoord"
                 },
                 {
@@ -2253,12 +2143,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/WirePosition.cp.name"
-                },
-                {
-                    "Code": "WirePosition.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/WirePosition.cp.mridSignificantPart"
                 },
                 {
                     "Code": "WirePosition.cp.energyIdentCodeEic",
@@ -2374,12 +2258,6 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/PowerSystemResource.cp.name"
                 },
                 {
-                    "Code": "PowerSystemResource.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/PowerSystemResource.cp.mridSignificantPart"
-                },
-                {
                     "Code": "PowerSystemResource.cp.energyIdentCodeEic",
                     "PropertyUri": "https://cim.ucaiug.io/ns/eu/IdentifiedObject.energyIdentCodeEic",
                     "Description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -2426,12 +2304,6 @@
                     "PropertyUri": "https://cim.ucaiug.io/ns/IdentifiedObject.name",
                     "Description": "The name is any free human readable and possibly non unique text naming the object.",
                     "OwnedUri": "https://cim.ucaiug.io/ns/UsagePoint.cp.name"
-                },
-                {
-                    "Code": "UsagePoint.cp.mridSignificantPart",
-                    "PropertyUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-                    "Description": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/UsagePoint.cp.mridSignificantPart"
                 },
                 {
                     "Code": "UsagePoint.cp.energyIdentCodeEic",
@@ -2491,15 +2363,6 @@
             "Status": "Active"
         },
         {
-            "Code": "mridSignificantPart",
-            "Name": "MRID significant part",
-            "Definition": "CIM UUIDs vary in the first component and confuse some indexers. This property isolates only the significant part if the id for easier indexing",
-            "DataType": "String",
-            "CreatorLanguageIsoCode": "EN",
-            "OwnedUri": "https://cim.ucaiug.io/ns/mridSignificantPart",
-            "Status": "Active"
-        },
-        {
             "Code": "IdentifiedObject.energyIdentCodeEic",
             "Name": "energyIdentCodeEic",
             "Definition": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
@@ -2545,11 +2408,15 @@
             "Status": "Active"
         },
         {
+            "Units": [
+                "m"
+            ],
             "Code": "WireInfo.gmr",
             "Name": "gmr",
             "Definition": "Geometric mean radius. If we replace the conductor by a thin walled tube of radius GMR, then its reactance is identical to the reactance of the actual conductor.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "1 0 0 0 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.gmr",
             "PhysicalQuantity": "Length",
             "Status": "Active"
@@ -2597,31 +2464,43 @@
             "Status": "Active"
         },
         {
+            "Units": [
+                "m"
+            ],
             "Code": "WireInfo.radius",
             "Name": "radius",
             "Definition": "Outside radius of the wire.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "1 0 0 0 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.radius",
             "PhysicalQuantity": "Length",
             "Status": "Active"
         },
         {
+            "Units": [
+                "A"
+            ],
             "Code": "WireInfo.ratedCurrent",
             "Name": "ratedCurrent",
             "Definition": "Current carrying capacity of the wire under stated thermal conditions.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "0 0 0 1 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.ratedCurrent",
             "PhysicalQuantity": "CurrentFlow",
             "Status": "Active"
         },
         {
+            "Units": [
+                "A"
+            ],
             "Code": "SwitchInfo.ratedCurrent",
             "Name": "ratedCurrent",
             "Definition": "Rated current.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "0 0 0 1 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/SwitchInfo.ratedCurrent",
             "PhysicalQuantity": "CurrentFlow",
             "Status": "Active"
@@ -2716,16 +2595,16 @@
                     "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.insulationMaterial/WireInsulationKind.siliconRubber"
                 },
                 {
-                    "Code": "WireInsulationKind.treeResistantHighMolecularWeigh",
+                    "Code": "WireInsulationKind.treeResistantHighMolecularWeightPolyethylene",
                     "Value": "treeResistantHighMolecularWeightPolyethylene",
                     "Description": "Tree resistant high molecular weight polyethylene wire insulation.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.insulationMaterial/WireInsulationKind.treeResistantHighMolecularWeigh"
+                    "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.insulationMaterial/WireInsulationKind.treeResistantHighMolecularWeightPolyethylene"
                 },
                 {
-                    "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyeth",
+                    "Code": "WireInsulationKind.treeRetardantCrosslinkedPolyethylene",
                     "Value": "treeRetardantCrosslinkedPolyethylene",
                     "Description": "Tree retardant crosslinked polyethylene wire insulation.",
-                    "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.insulationMaterial/WireInsulationKind.treeRetardantCrosslinkedPolyeth"
+                    "OwnedUri": "https://cim.ucaiug.io/ns/WireInfo.insulationMaterial/WireInsulationKind.treeRetardantCrosslinkedPolyethylene"
                 },
                 {
                     "Code": "WireInsulationKind.unbeltedPilc",
@@ -2755,41 +2634,57 @@
             "Status": "Active"
         },
         {
+            "Units": [
+                "VAR"
+            ],
             "Code": "ShuntCompensatorInfo.ratedReactivePower",
             "Name": "ratedReactivePower",
             "Definition": "Rated reactive power.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "2 1 -3 0 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/ShuntCompensatorInfo.ratedReactivePower",
             "PhysicalQuantity": "ReactivePower",
             "Status": "Active"
         },
         {
+            "Units": [
+                "Volt"
+            ],
             "Code": "ShuntCompensatorInfo.ratedVoltage",
             "Name": "ratedVoltage",
             "Definition": "Rated voltage.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "2 1 -3 -1 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/ShuntCompensatorInfo.ratedVoltage",
             "PhysicalQuantity": "Voltage",
             "Status": "Active"
         },
         {
+            "Units": [
+                "Volt"
+            ],
             "Code": "SwitchInfo.ratedVoltage",
             "Name": "ratedVoltage",
             "Definition": "Rated voltage.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "2 1 -3 -1 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/SwitchInfo.ratedVoltage",
             "PhysicalQuantity": "Voltage",
             "Status": "Active"
         },
         {
+            "Units": [
+                "A"
+            ],
             "Code": "SwitchInfo.breakingCapacity",
             "Name": "breakingCapacity",
             "Definition": "The maximum fault current a breaking device can break safely under prescribed conditions of use.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "0 0 0 1 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/SwitchInfo.breakingCapacity",
             "PhysicalQuantity": "CurrentFlow",
             "Status": "Active"
@@ -2818,11 +2713,15 @@
             "Status": "Active"
         },
         {
+            "Units": [
+                "A"
+            ],
             "Code": "TapChangerInfo.ctRating",
             "Name": "ctRating",
             "Definition": "Built-in current transformer primary rating.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "0 0 0 1 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/TapChangerInfo.ctRating",
             "PhysicalQuantity": "CurrentFlow",
             "Status": "Active"
@@ -2846,41 +2745,57 @@
             "Status": "Active"
         },
         {
+            "Units": [
+                "VA"
+            ],
             "Code": "TransformerEndInfo.emergencyS",
             "Name": "emergencyS",
             "Definition": "Apparent power that the winding can carry under emergency conditions (also called long-term emergency power).",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "2 1 -3 0 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.emergencyS",
             "PhysicalQuantity": "ApparentPower",
             "Status": "Active"
         },
         {
+            "Units": [
+                "Volt"
+            ],
             "Code": "TransformerEndInfo.insulationU",
             "Name": "insulationU",
             "Definition": "Basic insulation level voltage rating.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "2 1 -3 -1 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.insulationU",
             "PhysicalQuantity": "Voltage",
             "Status": "Active"
         },
         {
+            "Units": [
+                "VA"
+            ],
             "Code": "TransformerEndInfo.ratedS",
             "Name": "ratedS",
             "Definition": "Normal apparent power rating.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "2 1 -3 0 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.ratedS",
             "PhysicalQuantity": "ApparentPower",
             "Status": "Active"
         },
         {
+            "Units": [
+                "Volt"
+            ],
             "Code": "TransformerEndInfo.ratedU",
             "Name": "ratedU",
             "Definition": "Rated voltage: phase-phase for three-phase windings, and either phase-phase or phase-neutral for single-phase windings.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "2 1 -3 -1 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/TransformerEndInfo.ratedU",
             "PhysicalQuantity": "Voltage",
             "Status": "Active"
@@ -3054,11 +2969,15 @@
             "Status": "Active"
         },
         {
+            "Units": [
+                "Ohm"
+            ],
             "Code": "TransformerMeshImpedance.x",
             "Name": "x",
             "Definition": "Reactance between the 'from' and the 'to' end, seen from the 'from' end.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "2 1 -3 -2 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/TransformerMeshImpedance.x",
             "PhysicalQuantity": "Reactance",
             "Status": "Active"
@@ -3111,21 +3030,29 @@
             "Status": "Active"
         },
         {
+            "Units": [
+                "m"
+            ],
             "Code": "WirePosition.xCoord",
             "Name": "xCoord",
             "Definition": "Signed horizontal distance from the wire at this position to a common reference point.",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "1 0 0 0 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/WirePosition.xCoord",
             "PhysicalQuantity": "Displacement",
             "Status": "Active"
         },
         {
+            "Units": [
+                "m"
+            ],
             "Code": "WirePosition.yCoord",
             "Name": "yCoord",
             "Definition": "Signed vertical distance from the wire at this position: above ground (positive value) or burial depth below ground (negative value).",
             "DataType": "Real",
             "CreatorLanguageIsoCode": "EN",
+            "Dimension": "1 0 0 0 0 0 0",
             "OwnedUri": "https://cim.ucaiug.io/ns/WirePosition.yCoord",
             "PhysicalQuantity": "Displacement",
             "Status": "Active"

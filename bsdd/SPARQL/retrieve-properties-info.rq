@@ -10,6 +10,7 @@ PREFIX cimr: <https://cim.ucaiug.io/rules#>
 PREFIX eu: <https://cim.ucaiug.io/ns/eu#>
 PREFIX nc: <https://cim4.eu/ns/nc#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX : <https://bsdd.buildingsmart.org/>
 
 CONSTRUCT {
@@ -55,7 +56,10 @@ CONSTRUCT {
             OPTIONAL {
                 ?prop qudt:hasUnit ?unit .
                 ?unit qudt:hasDimensionVector ?unitDv
-            }
+            } .
+            OPTIONAL { ?prop cim:unitSymbol/skos:exactMatch ?unit .
+                       ?unit qudt:hasDimensionVector ?unitDv
+            } .
             BIND(
                 REPLACE(REPLACE(STR(
                                     ?unitDv), "http://qudt.org/vocab/dimensionvector/", ""), "A([0-9-]+)E([0-9-]+)L([0-9-]+)I([0-9-]+)M([0-9-]+)H([0-9-]+)T([0-9-]+)D([0-9-]+)", "$3 $5 $7 $2 $6 $1 $4")
@@ -88,11 +92,12 @@ CONSTRUCT {
                 ?propVal rdf:type ?range ;
                     rdfs:label ?pvLabel ;
                     rdfs:comment ?pvDef .
-                BIND(SUBSTR(REPLACE(STR(?propVal), ?prexixes, ""), 1, 50) as ?pvCode) .
-                BIND(SUBSTR(?pvLabel, 1, 50) as ?pvVal) .
+                BIND(REPLACE(STR(?propVal), ?prexixes, "") as ?pvCode) .
+                BIND(?pvLabel as ?pvVal) .
                 BIND(CONCAT(STR(?prop), "/",  ?pvCode) AS ?pvalOuri) .
             }
             BIND("String" as ?pDtype) .
         }
+        FILTER(?prop NOT IN (<https://cim.ucaiug.io/rules#mridSignificantPart>))
     }
 }
