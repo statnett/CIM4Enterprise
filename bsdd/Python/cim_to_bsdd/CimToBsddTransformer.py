@@ -47,7 +47,7 @@ BSDD_IMPORT = {
   "QualityAssuranceProcedure": None,
   "QualityAssuranceProcedureUrl": None,
   "ReleaseDate": datetime.utcnow().strftime('%Y-%m-%d'),
-  "Status": "Preview",
+  "Status": "Active",
 }
 PATH_CIM_BSDD_JSON = '/../../cim-bsdd.json'
 BSDD = "https://bsdd.buildingsmart.org/"
